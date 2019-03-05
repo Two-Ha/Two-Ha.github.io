@@ -1,6 +1,287 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux安装软件]]></title>
+    <url>%2F2019%2F03%2F05%2F%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[Linux下的安装包封装后的软件包：后缀.rpm(红帽公司的安装包)；后缀.deb debian操作系统的软件包 优点：安装方便 缺点：不可以指定安装路径，不可以定制安装功能，更新速度慢 未封装的源码包：GNU社区 优点：可以修改源代码，可以指定安装位置，可以定制安装功能模块，更新速度快,可以跨平台安装 缺点：安装过于繁琐，安装方式不统一 源码安装过程1.解压缩后找到configure 指定安装路径，指定安装功能模块，产生Makefile文件 其中configure文件中的一些解释： --prefix：指定安装目录 enable：默认不安装 disable：默认安装 Makefile文件： 将源代码编译成二进制文件 2.# ./configure --help 查看configure文件内容 # ./configure --prefix=/usr/local/webserver 执行安装包的提取，生成Makefile文件 3.# make 让Makefile文件执行操作 4.# make install 安装完成后： 1.# cd /usr/local 跳转到安装目录（/webserver/bin） 2.# ./apachectl start 启动http服务 3.# netstat -antpul | grep 80 查看80端口 4.# ifconfig 网络接口配置,查看网卡配置 桥接 5.# ifconfig eth0 IP地址 netmask 子网掩码 设置网卡 6./usr/local/webserver/bin/apachectl start|stop 具体路径 8./usr/local/webserver/htdocs/index.html 主页路径 删除软件：直接把安装目录删除 假若又不想删除的：# rm -rf !man.* 表示除man.类型的文件，其他的都删除 封装好的安装包的安装在media目录下的Centos下有很多安装包 .rpm：redhat package # ls | grep lftp 找到lftp的安装包 # rpm -qa|grep lftp 查看系统是否安装lftp # rpm -qpi 包.rpm 列出软件包的详细信息 # rpm -qpl 包.rpm 列出软件包的安装文件及目录 # rpm -ivh 包.rpm 安装软件 # rpm -qf 命令字 查看命令字来源于那个软件 # lftp -u username,userpasswd ftp IP地址 连接FTP服务器 help 获取帮助信息 get 文件名 下载文件 lcd /路径 改变当前工作目录 卸载： # rpm -e 软件名 卸载软件 rpm包的依赖关系rpm包不能独立存在，有的包之间有依赖关系，不能独立安装和卸载 依赖文件目录：/media/CentOS/Packages/repodata 解决依赖关系安装和卸载软件： 通过建立yum源文件安装软件 yum：通过连接软件包之间的依赖关系列表，从而起到安装软件的作用 1、写yum源配置文件 # cd /etc/yum.repos.d/ yum源文件的存放目录 # mkdir bak 新建目录，准备备份源文件 # mv C* bak 备份源文件 # vim 3class.repo 配置yum源文件（注意后缀必须写明） [dvd] 标签:随便写 name=dvdrom yumlist 描述：写明作用 baseurl=file:/misc/cd 位置:yum源的位置（其中注意：/misc/cd） gpgcheck=0 安全监测关闭 # yum install 软件名 安装软件 # yum remove 软件名 卸载软件 # yum install 软件名 -y 默认所有选择都选择y执行安装 # yum clean all 清除yum源的缓存]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>安装软件</tag>
+        <tag>yum源安装软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[远程交互式shell]]></title>
+    <url>%2F2019%2F03%2F05%2F%E8%BF%9C%E7%A8%8B%E4%BA%A4%E4%BA%92%E5%BC%8Fshell%2F</url>
+    <content type="text"><![CDATA[安装软件yum install expect 脚本语言 &quot;注意：空格的问题&quot; #!/usr/bin/expect set timeout 30(-1：永不过期) spawn ssh 用户名@IP &quot;执行的操作&quot; expect &quot;第一种情况&quot; { 操作：send &quot;需要发送的信息\r&quot; expect &quot;子情况&quot; 子操作：send &quot;需要发送的信息\r&quot; } &quot;第二种情况&quot; { 操作：send &quot;需要发送的信息\r&quot; } interact ---执行完成后把控制台交个当前bash $argv --获取变量 嵌套： #!/bin/bash expect &lt;&lt; EOF(end of file) ...(expect脚本语言) expect eof EOF 一个实例#!/bin/bash for IP in 100 1 2 3 do IPADDR=192.168.0.$IP expect &lt;&lt; EOF spawn ssh root@$IPADDR &quot;sed -i &apos;1i nameserver 8.8.8.8&apos; /etc/resolv.conf&quot; expect &quot;(yes/no)?&quot; { send &quot;yes\r&quot; expect &quot;passwd:&quot; send &quot;password\r&quot; } expect &quot;passwd:&quot; { send &quot;password\r&quot; } expect eof EOF --结束expect解释器，必须和do缩进一样 done]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>远程交互</tag>
+        <tag>SHELL脚本</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用户及ACL]]></title>
+    <url>%2F2019%2F03%2F05%2F%E7%94%A8%E6%88%B7%E5%8F%8AACL%2F</url>
+    <content type="text"><![CDATA[用户分类超级用户：root（唯一标示：uid=0）普通用户：可以登录系统，权限没有root用户高；可以创建自己的文件，辅助管理系统（uid=500~6000）程序用户：（uid=1~499），不可以登录系统 用户文件详解/etc/passwd：记录系统中所有用户信息 root:x:0:0:root:/root:/bin/bash 以：为分隔符，为字段 字段一：用户名 字段二：密码占位符 字段三：udi 字段四：gid（用户基本组） 字段五：用户信息（包括用户全名，电话，信息等） 字段六：用户的家目录 字段七：用户的登录shell /etc/shadow：记录用户的密码信息 root:乱码:17098:0:99999:7::: 字段一：用户名 字段二：sha-512加密后的密文 字段三：天数距离1970年1月1日密码最近一次修改的时间 字段四：密码的最短有效期（n天内不能改密码，0是不限制，随时可以改） 字段五：密码的最长有效期（99999：无限期） 字段六：密码过期前7天提醒 字段七：密码的不活跃期（5：密码过期后5天内还能使用） 字段八：用户的失效时间（距离1970年1月1日） 字段九： /etc/group：组信息 root:x:0: 字段一：组名 字段二：密码占位符 字段三：组id 字段四：改组中的附加用户 常用命令登入其他用户：Ctrl+Alt+F2 退出登录界面：Ctrl+Alt+F1 查看用户的信息：id 用户名 切换用户：su 用户名 useradd 建立用户 -u：指定用户的uid -g：指定用户的组 -G：指定用户的附加组 -s：指定用户登录shell -M：不建立用户家目录 -d：指定用户家目录（不存在的目录） 程序用户：game #useradd -u 250 -M -s /sbin/nologin game 基本组：雪豹 gid 1000 #group -g 1000 xuebao 普通用户：ccg 600 附加组：root #useradd -u 600 -g xuebao -G root ccg groupadd 建立组 -g：指定gid号 passwd 为用户建立密码 -S：查看用户密码状态 -l：锁定用户 -u：解锁用户 usermod 修改用户 useradd的选项也适合 -L：锁定用户 -U：解锁用户 userdel 删除用户 -r：删除用户的所有文件包括家目录 groupdel 删除组 groupmod 修改组信息 -g：修改gid gpasswd 为组中添加附加用户 -a 添加 Linux中文件权限ls -l 查看文件的信息 中间两个root： 第一个：所属者 第二个：所属组 root前面的数字： 对于文件：代表这个文件有多少个硬链接 对于目录：代表这个目录中有所少个子目录 权限块：- --- --- ---（从左向右查询权限） 第一位：文件的类型（-：普通文件；d：目录；l：符号连接；b：块设备） 第二三四位：文件所有者的权限（r：读取；w:写入；x:执行；-：无权限） 对目录：r：列出目录；w:可以增删文件；x：可以进入该目录 第五六七位：文件所属组的权限 第八九十位：其他用户对文件的权限 能不能删除文件：看目录权限 chmod o：对象 +：运算符 权限 改变文件或者目录的权限 #chmod g+w test.txt 对象：u:user；g:group；o：other；a：all 运算符：+：添加；-删除；=：指定（会让原来的权限失效） 用八进制换算文件权限： #chmod 777 test.txt 给属主，属组，其他用户赋予读写执行的权限 普通文件：644 目录文件：755 改变文件属组chown 用户名 文件名 将文件的所属者改成另一个用户（一般用root身份改） chgrp 组名 文件名 将文件的所属组改成另一个组：用root身份 chown [用户名]:[组名] 文件名 同时修改所属者和所属组 特殊权限设置#which 命令字 查询该命令的文件位置 粘滞位：一般作用域目录，是目录中的文件只能谁创建谁删除（root除外） 命令：chmod o+t 目录 chmod 1777 目录 sgid：作用于目录，该目录下所建立的文件和目录，强制继承该目录的组 命令：chmod g+s 目录 chmod 4777 目录 suid:作用于可执行文件，使文件拥有者的身份运行该文件 命令：chmod u+s 文件 设置文件的ACL： 命令：setfacl 设置文件访问控制 getfacl 文件 查看文件访问控制列表 seetfacl -m:修改|-x：撤销 u：用户名：权限（撤销的时候不需要） 文件 设置访问控制列表]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>用户</tag>
+        <tag>ACL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[文件系统、硬盘系统]]></title>
+    <url>%2F2019%2F03%2F05%2F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E3%80%81%E7%A3%81%E7%9B%98%2F</url>
+    <content type="text"><![CDATA[LINUX文件系统主分区：sda1 扩展分区：sda2-4 逻辑分区：sda5-- ext4:文件系统，扩展文件系统；支持单个文件容量大，设定日志记录 swap：交换文件系统，交换分区；不用来存储文件，虚拟内存，内存的1-1.5倍之间 命令：# df -Th 查看系统分区的使用情况 fdisk命令# fdisk /dev/sdb 打开磁盘管理器 l 显示磁盘信息 n 创建一个新的分区 d 删除分区 p 列出分区表 w 保存并退出 q 不保存退出 t 改变分区的标示符 # cat /proc/partitions 查看分区表详细信息 分区中详细信息分区： inode区：节点区（有限）；存放文件的数量 block区：块区；存放文件内容 格式化文件系统： # mkfs.ext4 /dev/sdb1 格式化成ext4的文件系统 -b 块大小（字节：4096） # mkfs.vfat -F 32 /dev/sdb5 格式成fat32文件系统 # mkswap /dev/sdb6 格式成swap文件系统 挂载：（临时） # mount 设备 挂载点 # mkdir /mnt/{ext4，fat32} 建立挂载点 # mount /dev/sdb1 /mnt/ext4 挂载分区 # cd / 退出文件系统 # umount /dev/sdb1 卸载目录（如果不退出文件系统，不能卸载） 挂载swap： # free -m 查看内存的使用状态 # swapon /dev/sdb6 挂载交换分区 # swapoff /dev/sdb6 卸载交换分区 # swapon -s 查看挂载交换分区信息 永久挂载/etc/fstab 文件系统列表，决定设备和目录之间的挂载信息 第一列：设备 第二列：挂载点（swap：swap） 第三列：文件系统类型（fat32：vfat） 第四列：挂载属性（一般：defaults） 第五列：是否支持宕机状态下的日志记录（一般：0） 第六列：是否支持开机自检测（一般：0）[开机查看是否有这个设备，没有不开机] 命令： # mount 查看挂载设备 # mount -a 立即挂载fstab上的文件系统 # swapon -a 立即挂载所有的swap # blkid /dev/sdb1:[设备名] 查看设备的UUID 挂载iso文件建立iso文件： # mkisofs -r:文件保留原名 -o：输出文件 /tmp/boot.iso：输出的文件名 /boot：需要压缩的文件 # mount -o loop /tmp/boot.iso /mnt/iso 挂载iso文件 在写fstab的时候：挂载属性：defaults，loop LINUX文件系统的磁盘配额作用：限制用户存储文件的数量（inode区）和大小（block区） 建立磁盘配额 对即将挂载的磁盘添加支持配额的属性 在fstab文件下： 修改挂载属性为：defaults，usrquota，grpquota 生成记录用户配额和组配额信息的文件 命令： # quotacheck -ugcv /dev/sdb1 显示设备的配额信息 -u:user -g:group -c:create -v:详细信息 添加配额信息：jw 5个 3个的时候提示 jw 10M 5M的时候提示 # edquota -u jw：用户名 其中文件中的字段意义： filesystem：支持配额的设备 blocks：（0：没有存入任何数据） soft：容量警告值（0：不限制）5M hard：容量的峰值（0：不限制）10M inode：（0：一个文件都没存） soft：数量警告值 3 hard：数量的峰值 5 开启分区配额功能： # quotaon /dev/sdb1 开启磁盘配额 # quotaoff /dev/sdb1 关闭磁盘配额 开启用户的写权限 通过命令查看用户配额信息 # quota -u|-g jw 查看用户或者组的配额信息 # repquota /dev/sdb1 查看设备的配额信息 大于2T硬盘的分区#partx 自己查找]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>文件系统</tag>
+        <tag>硬盘系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[文件共享]]></title>
+    <url>%2F2019%2F03%2F05%2F%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%2F</url>
+    <content type="text"><![CDATA[samba协议端口：139和445 负责win主机和linux主机之间实现文件系统共享 微软： smb协议：服务消息协议 cifs协议：通用互联网文件系统协议 作用： 将自己模拟成一个win主机，共享自己的文件系统，给另外一台win主机 开启匿名登录 # yum install samba -y # /etc/samba/smb.conf 文件内： #号：描述 ;号：作用行 # mv smb.conf smb.conf.bak 备份源文件 # grep -v &quot;#&quot; smb.conf |grep -v &quot;;&quot; |egrep &quot;=|]&quot; &gt;smb.conf 把有用行导入新文件中 有用项： [global] workgroup=WORKGROUP :组 log file= :日志文件 max log= :日志文件多大时新建文件 security= :用什么身份登录 [home] :用户登录的时候能看见家目录 comment= :描述 browseable= :网上邻居是否课件 guest = ok :是否允许所有人访问等效于public writable= :是否可写入 [cetnosDVD] :显示的名字 comment= :描述，随便写 path = /misc/cd :文件路径 public = yes :允许谁进入系统 readonly = yes :只读打开 其中security= user：使用本地samba用户身份登录 share：支持匿名登录 server：另外一台linux用户名登录 domain：另外一台win主机用户名登录 在win主机： 运行：\\IP地址 开启本地用户登录新建文件夹 # mkdir /share # chmod o+w /share 新建用户 # useradd jw # passwd jw :给用户密码,可以不要 # smbpasswd -a jw ：给用户共享文件夹密码 修改smb配置文件 修改： security = user 继续向后添加： [sharedir] comment = share path = /share public = no valid users = jw,jw_1 readonly = yes write list = jw 重启服务 /etc/init.d/smb reload 删除链接记录(win主机) net use * /del 开启本地用户别名登录别名文件： /etc/samba/smbusers 本地用户 = 别名 修改配置文件 在[global]中添加 username map = /etc/samba/smbusers nfs服务负责linux和linux主机之间实现文件系统共享 依赖于RPC服务（远端调用服务） 需要安装： rpcbind软件（系统默认安装好的:111端口） nfs-utils软件（自己安装） 配置文件： /etc/exports 格式： /myshare *.simplexue.com.cn 共享给域 /myshare desktop[0-19].simplexue.com.cn /myshare 172.25.0.0/16 /myshare *.simplexue.com.cn(r),172.25.0.0/16(wr) /myshare 192.168.0.0（wr,no_root_squash） no_root_squash：允许对方使用root身份挂载 客户端连接 # showmount -e IP地址（192.168.0.1） 查看有哪些共享 # mkdir /mnt/nfs 挂载点 # mount 192.168.0.1：/share /mnt/nfs # vim /etc/resolv.conf 删除里面的内容 # mount 查看挂载 # cd /mnt/nfs # umount 实现永久挂载 # vim /etc/fstab 192.168.0.1:/share /mnt/nfs nfs defaults 0 0 # mount -a vsftpdftp服务文件共享 使用端口： 主动：20、21 被动：21、随机 21：用于控制连接 传输模式： 文本模式：ASCII模式 二进制模式：Binary模式 安装软件 yum install vsftpd -y /etc/init.d/vsftpd start 共享目录：/var/ftp/ 配置文件 /etc/vsftpd/vsftpd.conf 主配置文件 /etc/vsftpd/ftpusers 黑白名单（和userlist_deny） /etc/vsftpd/user_list 白名单 ftp用户类型： 匿名用户：anonymous、ftp 本地用户：服务器本身的用户家目录为共享目录 虚拟用户：使用独立账户面数据文件的使用户 常见的服务器： IIS、Server-U、Vsftp ftp的详细配置/var/ftp/pub：权限设置 全局配置 - listen=YES：是否以独立运行的方式监听服务 - listen_address=192.168.4.1：设置监听的IP 地址 - listen_port=21：设置监听FTP 服务的端口号 - write_enable=YES：是否启用写入权限 - download_enable＝YES：是否允许下载文件 - userlist_enable=YES：是否启用user_list 列表文件 - userlist_deny=YES：是否禁用user_list 中的用户 - max_clients=0：限制并发客户端连接数 - max_per_ip=0：限制同一IP 地址的并发连接数 - pam_service_name=vsftpd :验证用户身份的 - /var/ftp/pub=022:文件夹的权限的反掩码 - tcp_wrappers=YES 匿名FTP配置项 - anonymous_enable=YES：启用匿名访问 - anon_umask=022：匿名用户所上传文件的权限掩码 - anon_root=/var/ftp：匿名用户的FTP 根目录 - anon_upload_enable=YES：允许上传文件 - anon_mkdir_write_enable=YES：允许创建目录 - anon_other_write_enable=YES：开放其他写入权 - anon_max_rate=0：限制最大传输速率（字节/秒） 本地用户配置项 - local_enable=YES：是否启用本地系统用户 - local_umask=022：本地用户所上传文件的权限掩码 - local_root=/var/ftp：设置本地用户的FTP 根目录 - chroot_local_user=YES：是否将用户禁锢在主目录 - local_max_rate=0：限制最大传输速率（字节/秒） 被动模式开启端口设置 - pasv_min_port=最小端口号 - pasv_max_port=最大端口号]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>文件共享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网络IP地址配置]]></title>
+    <url>%2F2019%2F03%2F05%2F%E7%BD%91%E7%BB%9CIP%E5%9C%B0%E5%9D%80%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[配置IP、子网掩码、网关、dns基本命令关闭NetworkManager服务 手动配IP地址 ifconfig 查看、配置网络地址 eth0 Ethernet：以太网卡，0：第一块... -a：查看所有网络接口的信息 ifconfig eth0 查看第一块网卡的信息 # ifconfig eth0 up|down 激活|禁用网卡 # ifup|ifdown eth0 激活|禁用网卡 # ifconfig eth0:0 IP地址 设置虚拟网络接口 # hostname 主机名 修改主机名（/etc/sysconfig/network:HOSTNAME=主机名） 配置过程给网卡配IP地址 # ifconfig eth0 192.168.200.xxx netmask 255.255.255.0 配置网关 # route -n 查看路由表 # route add default gw 192.168.200.1 添加一个默认网关 # route del default gw IP地址 删除网关 # route add -net IP地址/掩码位 gw IP地址 为某个网段单独配置网关 配置DNS 配置文件：/etc/resolv.conf 文件内容 nameserver 202.106.0.20 北京的DNS：202.106.0.20 # nslookup 域名 查看域名的解析IP地址 ping# traceroute 测试主机到主机之间经过的节点 # ping IP地址 -c：次数限制 -s：封包大小 -i：ping的间隔时间（最小：0.2） -W：超时实现（s） netstat查看系统端口使用状态 -a：显示所有服务 -n：用数字代替主机名 -t：查看tcp协议 -u：查看udp歇息 -p：显示pid号和进程名称 -l：查看监听端口 实现永久生效修改网络接口的配置文件 /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0 # 设备名 TYPE=Ethernet # 网卡类型 ONBOOT=yes # 是否支持network服务管理 BOOTPROTO=static|dhcp # 获取IP地址的方式 IPADDR=IP地址 # IP地址 NETMASK=子网掩码 # 子网掩码 GATEWAY=网关 # 网关 DNS1=dns # 主dns服务器 DNS2=dns # 副dns服务器 # service network restart 重启服务才能运行]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>IP地址配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[日志服务器搭建]]></title>
+    <url>%2F2019%2F03%2F05%2F%E6%97%A5%E5%BF%97%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[基本配置修改网卡名称eth0/etc/udev/rules.d/70-persistent-net.rules 开启内核路由功能/etc/sysctl.conf net.ipv4.ip_forward=1 # sysctl -p 开启路由功能 远程登录# ssh root@IP地址 /var/log/secure 日志作用：记录系统、程序运行时发生的各种事件，用于诊断、解决系统故障等 内核及系统日志 由syslog服务管理日志，日志格式相似 用户日志 记录系统用户登录及退出系统的相关信息 程序日志 由各种应用程序管理的日志文件，格式多样 日志记录配置文件/etc/rsyslog.conf 服务： 程序：/sbin/rsyslogd 保存：/var/log 分类： message：内核、公共消息日志 cron：计划任务日志 dmesg：系统引导日志 maillog：邮件系统日志 lastlog、secure、wtmp、btmp：用户登录日志 级别: 0-EMERG-紧急：导致主机系统不可用 1-ALERT-警告：必须马上采取措施解决 2-CRIT-严重：比较严重的情况 3-ERR-错误：运行出错 4-WARNING-提醒：可能影响系统的功能 5-NOTICE-注意：不会影响系统，但需要注意 6-INFO-信息：一般信息 7-DEBUG-调试：程序或系统调试信息 日志格式：时间标签 主机名 子系统：消息信息（/var/log/messages） 日志安全日志备份和归档 延长日志的保存期限 控制日志的访问权限 集中管理日志： 将服务器的日志发送到日志服务器统一管理 便于日子信息的统一收集、整理、分析 杜绝日志信息的意外丢失、恶意修改和删除 转发日志发送方配置文件： # vim /etc/rsyslog.conf 添加：*.* @@接收方的IP地址：端口号 开启：$ModLoad imtcp $InputTCPServerRun 514（在原来的配置文件中注释掉了） 重启：service rsyslog restart|/etc/init.d/rsyslog restart 接收方配置文件： # vim /etc/rsyslog.conf 开启：$ModLoad imtcp $InputTCPServerRun 514（在原来的配置文件中注释掉了） 扩展目录：/etc/resyslog.d/ 添加：主机名.conf 配置：：属性，比较操作符， “值” 记录地址 属性： fromhost：来源主机（域名） fromhost-ip：来源主机IP地址 msg：消息内容（消息关键字） hostname：内容主机（内容关键字） 操作符： contains：包括 isequal：等于 startwith：以...开头 例子： ：formhost-ip,isequal, &quot;192.168.0.1&quot; /var/log/client/192.168.0.1 重启：service rsyslog restart|/etc/init.d/rsyslog restart]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>日志服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[开机服务和进程管理]]></title>
+    <url>%2F2019%2F03%2F05%2F%E5%BC%80%E6%9C%BA%E5%8F%8A%E6%9C%8D%E5%8A%A1%E3%80%81%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%2F</url>
+    <content type="text"><![CDATA[LINUX开机开机加电-BIOS（开机自检）-MBR引导-GRUB菜单-加载内核（kernel）-init进程初始化 init进程： 由linux内核加载运行/sbin/init程序 是系统中第一个进程 PID永远为1 init进程的配置文件/etc/inittab 配置默认运行级别 /etc/sysconfig/init 控制tty终端的开启数量、终端颜色方案 /etc/init/rcS.conf 加载rc.sysinit脚本，完成初始化任务 /etc/init/rc.conf 兼容脚本，负责各运行级别的调用处理 /etc/init/rcS-sulogin.conf 单用户模式启动/sbin/sushell环境 /etc/init/control-alt-delete.conf 控制终端下的ctrl+alt+del热键操作 /etc/init/start-ttys.conf 配置tty终端的开启数量、设备文件 /etc/init/tty.conf 控制tty终端的开启 系统默认启动级别0：关机状态，使用该级别时将会关闭计算机 1：单用户模式，不需要验证码即可登录系统，多用于系统维护 2：字符界面的多用户模式，不支持网络访问 3：字符界面的完整多用户模式，大多数服务器主机运行在次级别 4：未分配使用 5：图形化界面的多用户模式，提供了图形化桌面的操作环境 6：重新启动，使用该级别时将会重新启动系统 修改：/etc/inittab文件 id:3:initdefault: 设置默认启动级别为3级（字符级） 命令显示切换当前运行级别 # runlevel 临时切换运行级别 # init 0-6 控制系统服务： 通过服务控制： # service 服务名 控制类型 通过脚本控制： # /etc/init.d/服务名 控制类型 控制类型： start：启动 stop：停止 restart：重启 reload：重载 status：状态 管理服务的工具集ntsysv工具： 提供一个交互、可视化界面 可以在字符终端运行，便于集中管理多个服务 命令字： # ntsysv --level 级别列表 chkconfig工具： 不提供交互式、可视化界面 对单个服务管理效率高 命令字： 查看服务的状态 # chkconfig --list [服务名称] 设置服务的开机启动状态 # chkconfig --level 0123456 服务名称 on|off 注意：只对开机启动有影响，不会影响当前的服务状态 进程管理程序： 保存在硬盘等长期存储介质中的可执行代码 进程： 程序运行时在CPU中的状态 动态的、有父子进程关系、进程可以创建进程 PID号： 进程在创建的时候系统给与进程的一个唯一标示符 命令查看进程的状态 # ps 列出进程表 # ps aux 查看特定进程的pid # pgrep 程序名 pid号 进程的状态 进程状态分类： S：sleep睡眠状态 s：son有子进程 N：优先级低 &lt;：优先级高 l：开启多个进程 R：running处于运行状态 +：前台运行，占用终端 Z：zombie僵尸进程 查看进程树 # pstree -p pid号 查看某个进程的进程树 动态的查看进程 top 默认3秒变化一次 P：按CPU占用率排序 M：按内存占用率排序 q：退出 进程管理方式开启火狐浏览器 firefox firefox&amp; 直接在后台运行 将前台进程放入后台并暂停 ctrl+z 查看后台进程 jobs 将后台进程调入前台 fg 进程编号 使进程在后台继续运行 bg 进程编号 杀死进程 kill 进程pid -9：强制杀死 杀死进程树 killall 进程pid -9：强制]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>开机服务</tag>
+        <tag>进程管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[计划任务管理]]></title>
+    <url>%2F2019%2F03%2F05%2F%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%2F</url>
+    <content type="text"><![CDATA[计划任务的分类1.一次性计划任务 2.周期性计划任务 一次性计划任务确认一次性计划任务的服务状态 /etc/init.d/atd status 命令： 服务脚本：/etc/init.d/atd 设置任务： at [HH:MM] [YYYY-mm-dd] 任务 结束编辑任务 ctrl+d 查询 atq 删除 atrm 查看指定计划任务内容 at -c 周期性计划任务确认周期性计划任务的服务状态 /etc/init.d/crond status /var/log # cd /var # tar -zcf /tmp/log.tar.gz log 配置文件：/etc/crontab 查看周期性计划任务表 分 时 日 月 周 用户 命令 0-59 0-23 1-31 1-12 1-7 *：每 ，：分割不同时间段 -：从什么到什么 注意：一般来说时间和星期不要同时指定 配置文件修改后,对计划任务进行重载 # /etc/init.d/crond reload]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>计划任务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[防火墙设置]]></title>
+    <url>%2F2019%2F03%2F04%2F%E9%98%B2%E7%81%AB%E5%A2%99%E8%AE%BE%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[IPtables都是Linux的防火墙： netfilter: 来至于linux内核中的包过滤功能体系，称为linux防火墙的“内核态” iptables： 位于/sbin/iptables，用于管理防火墙规则的工具，称为linux防火墙的“用户态” 工作层次： 主要网络层，针对IP数据包（对包内的IP地址、端口等信息的处理） 功能： 表-四张表-四个功能 raw:流量跟踪 mangle:流量标记、流量整形 nat:网络地址装换 filter:包过滤功能 链-chain-五个链-记录防护规则 INPUT:入站 OUTPUT:出站（一般不配规则） FORWARD:转发 PEREROUTIONG:路有前 POSTROUTING:路由后 结构：每一张表下有相应的链 规则： 按照下面顺序，匹配即执行；匹配不到则默认 表：raw-mangle-nat-filter 入站：PREROUTING-INPUT 出站：OUTPUT-POSTROUTING 转发：PREROUTING-FORWARD-POSTROUTING 命令： iptables [-t 表名] 选项 [链名] [条件] [-j 控制类型] 不指定表：默认filter 不指定链：默认所有链 除非设置链的默认策略，否则必须制定匹配条件 选项、链名、控制类型用大写，奇遇用小写 控制类型： ACCEPT: 允许 DROP: 丢弃 REJECT: 拒绝 LOG: 记录日志，然后匹配下一条规则 选项字： -A： 在链尾追加规则 -I： 在链首插入规则 -L： 列出所有的规则条目 -n： 数字形式显示ip地址、端口等信息 -v: 详细显示规则信息 --line-numbers: 显示规则序列号 -D: 删除链内指定序号的规则 -F: 清空所有规则 -P: 为指定的链设置默认规则 条件匹配分类： 通用匹配：直接使用，不依赖其他条件或者扩展（协议、IP地址、网络接口等） 隐含匹配：依赖于特定的协议（端口、TCP标记、ICMP类型等） 显示匹配：添加&quot;-m 扩展模块&quot;的形式明确指出（多端口、MAC地址、IP范围、数据包状态等） 通用匹配条件: -p 协议名 --协议配置 -s 原地址 --地址匹配 -d 目的地址 -i 入站网卡 --接口匹配 -o 出站网卡 隐含匹配条件： --sport 源端口 --端口匹配 --dport 目的端口 --tcp-flags 检查范围 被设置的标记 --TCP标记匹配 --icmp-type CIMP类型（0：回显应答，8：请求） --ICMP类型匹配 显示匹配条件： -m multiport --sport 源端口列表 --多端口匹配 -m multiport --dport 目的端口列表 -m iprange --src-range IP范围 --IP地址范围匹配 -m mac --mac-source MAC范围 --MAC范围匹配 -m state --state 连接状态 --状态匹配 查看运行状态 watch -n1[这是数字一] iptables -nvL --line-numbers --1s拜年话一次的方式查看 添加ftp跟踪模块： /etc/sysconfig/iptables-config 第一个空项&apos;nf_conntrack_ftp&apos; 规则备份及还原备份： iptables-save &gt; /备份路径/备份文件名 还原： iptables-restore &lt; /路径/文件名 启动脚本： /etc/init.d/iptables 规则文件位置： /etc/sysconfig/iptables SNAT策略应用：局域网主机共享一个公网ip地址接入Internet 原理：源地址装换-修改数据包的源地址 Linux条件： 局域网各个主机正确设置IP地址、子网掩码、默认网关 Linux网关支持IP路由转发 命令： iptables -t nat -A POSTROUTING -s 局域网段/24 -o 外网卡 -j SNAT --to-source 公网ip MASQUERADE-地址伪装： 用于：外网IP地址非固定，对于ADSL拨号接口（ppp0/ppp1） 命令： iptables -t nat -A POSTROUTING -s 局域网段/24 -o 外网卡 -j MASQUERADE --to-source 公网ip DNAT策略应用：在Internet发布位于企业局域网中的服务器 原理：目标地址转换-修改数据包中的目标地址 Linux条件： 局域网的web服务器能够访问Internet 网关的外网IP地址有正确的DNS解析记录 Linux网关支持IP路由转发 命令： iptables -t nat -A PREROUTING -i eth0 -d 外网接口IP -p tcp --dport 80 -j DANT --to-destination 内网主机IP 在发布时修改目标端口： iptables -t nat -A PREROUTING -i eth0 -d 公网IP -p tcp --dport 发布端口 -j DNAT --to-destination 内网主机IP：实际端口]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>防火墙</tag>
+        <tag>Linux防火墙</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[常用文件处理命令]]></title>
+    <url>%2F2019%2F03%2F04%2F%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4%2F</url>
+    <content type="text"><![CDATA[Linux快捷方式的使用Tab键： 补齐命令 补齐文件或目录 Ctrl+L： 让现在光标处处于最顶端（相当于清屏，但不清除内容，把所有内容移动到上端） Ctrl+C： 终止当前进程 Ctrl+U： 清除当前光标处的行 Ctrl+Shift++： 放大字体 Ctrl+-： 缩小字体 Linux命令分类以及查看帮助手册内部命令： Shell自带的命令 系统默认的解释器为bash 外部命令： 一些软件安装后产生的命令 1.查看命令帮助：#man ls 查看ls命令帮助 在帮助页面输入：/查找的命令字 能够找到输入的命令，n：查找下一个 2.在当前屏幕上显示帮助：#命令字 --help 3.查看内部命令帮助：#man cd 查看cd命令的帮助信息 4.在当前页面查看内部命令帮助：#help cd 文件处理命令# more 文件名 分页查看文件内容 空格：翻一页；b：回翻一页；q：退出 # less 文件名 逐行查看内容 空格：翻一页；下键：向下一行；上键：向上一行 # head 文件名 查看文件的前10行内容 -数字 显示前【数字】行 # tail 文件名 查看文件后10行 -f 跟踪查询，实时查询 # grep “关键字” 文件名 过滤关键字所在的行 在关键字前面加“^”符号：过滤以关键字开头的行 在关键字后面加“$”符号：过滤以关键字结尾的行 -v ：反选关键字 -n ：显示行号 --color ：高亮显示 -a ：忽略大小写查找 # du -sh 文件名 统计文件 # wc 文件名 统计文件内容 -l ：只显示行 -w ：多少字符串 -c ：显示大小 # ls -l 目录名 |grep &quot;^d&quot;|wc -l 组合命令 | ：管道符，将前一个命令的结果，作为后一个命令的输入 # alias 代替命令=&quot;源命令&quot; 给命令字赋予副命令字 永久生效： # echo &quot;&quot; &gt; /etc/bushrc # source /etc/bushrc # find 查找范围 选项 查找内容 * ：通配符 # find / -name grub -a -type d -a：and；-o：or -type：类型 d：目录；f：文件 -name:按名字查询 -user：按照用户名查询 -size：按照文件大小查询 +2M/2M/-2M：大于/等于/小于2M的文件 -exec：扩展选项，可以执行命令（格式：命令字 选项 {} 目的地 \;），以：&quot;\;&quot;结尾 # file 文件名 分析文件属性 # dd if=/dev/zero of=/tmp/bigfile bs=1M count=100 if:输入源 zero：全0文件 of：输出文件 bigfile：生成的文件 bs：单位，以多大的单位生成一次 count：生成次数 # gzip -9 文件名 压缩文件 -9：以最大比压缩文件 # gunzip 文件名 解压文件 # bzip2 -9 文件名 压缩文件（压缩比gzip更加完全） # bunzip2 文件名 解压文件 注意：gzip和bzip2都不能压缩目录，所以先生成tar包 # tar -cf /路径/生成文件名.tar 源文件名/（用相对路径压缩） 将源文件打包成生成文件（.tar） -zcf :采用gzip的压缩方式生成tar包 -jzf ：采用bzip2的压缩方式生成tar包 # tar -tf 文件名.tar 预览文件内的内容 # tar -xf 文件名.tar -C /目的地 将文件解压缩到指定目的地 -zxf ：采用gzip的压缩方式打开tar包 -jxf ：采用bzip2的压缩方式打开tar包]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>文件处理</tag>
+        <tag>命令</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[简单安全配置]]></title>
+    <url>%2F2019%2F03%2F04%2F%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[已经关闭的iptables 作用：包过滤 selinux 作用：会对操作系统中所有的文件打标签 xinet名字：扩展型互联网服务 作用：新一代网络守护进程，管理多种轻量级服务(telnet,rsync,tftp) 安装软件 yum install telnet-server 配置文件 /etc/xinetd.d/telnet disable = no telnet缺点：太慢，明文传输 安装 yum install wireshark* -y 在左上角程序里面-运行wireshark-设置interface-start tcpwapper/etc/hosts.allow --白名单 /etc/hosts.deny --黑名单 黑名单配置： 服务器名称：对象（主机名，域名，IP地址，网段/子网掩码，通配符） 在/etc/xinetd.d/telnet文件中找到启动命令查看服务名称：/usr/sbin/in.telnetd 规则： 先允许，后拒绝；默认允许 SSH远程文件传递yum install lrzsz -y 在windows上： rz --上传文件到linux sz --下载linux文件到本地 命令： scp /本地文件路径 用户名@IP地址:/对方接受文件路径 scp /opt/jw.text root@192.168.0.1:/root/Desktop sftp root@192.168.0.1:/boot ssh root@192.168.0.1 -p --指定端口 -l --指定用户名 windows软件：xshell 配置文件：/etc/ssh/ :ssh.conf --客户端配置文件 :sshd.conf --服务端配置文件 Port 22 --端口号 PermitRootLogin no --拒绝root用户登录 无密码登录： 产生自己的公私钥： ssh-keygen -t rsa -t :--加密方式 传递给主机： ssh-copy-id -i id_rsa.pub 主机用户名@IP地址 后面接： &apos;命令字&apos; --用对方身份在对方服务器上运行命令 Linux远程windows桌面打开windows的远程桌面功能 安装vnc客户端 IP地址：1 Linux： yum install tsclient -y --选择图形界面连接主机 oracle，java需要图形化界面安装，完成后以level3级别运行 yum install tigervnc-server -y --安装vnc软禁 vncserver 建立vnc密码 --开启服务 vncpasswd --修改vnc密码]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>安全配置</tag>
+        <tag>SSH</tag>
+        <tag>远程桌面</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[WEB服务器的搭建、主从DNS和虚拟主机]]></title>
+    <url>%2F2019%2F03%2F04%2FWEB%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%E3%80%81%E4%B8%BB%E4%BB%8EDNS%E5%92%8C%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%2F</url>
+    <content type="text"><![CDATA[安装软件yum install httpd 安装 /etc/init.d/httpd 启动脚本 /etc/httpd/conf/httpd.conf 配置文件 /var/www/html 主页目录 /var/log/httpd/ 日志文件 主配置文件ServerRoot “/etc/httpd“ ：服务主目录 PidFile run/httpd.pid ：PID文件 Listen 80 ：监听端口 Include conf.d/*.conf ：扩展配置文件 User apache ：启动用户 Group apache ：启动组 ServerAdmin root@localhost ：管理员邮箱 ServerName www.example.com:80 ：域名主机名 DocumentRoot “/var/www/html“ ：默认主页存放目录 DirectoryIndex index.html index.html.var ：索引文件 ErrorLog logs/error_log ：错误日志 CustomLog logs/access_log combined ：访问日志 访问控制设定作用：对控制对特定主页的访问，为相应的目录添加访问控制 分类：客户机地址限制、用户授权限制 扩展配置文件中： Options Indexes：文件共享 FollowSymLinks：符号连接 Order配置：定义控制顺序 Order allow,deny：先允许后拒绝，默认拒绝 Order deny,allow：先拒绝后允许，默认允许 配置方式： Order allow,deny Allow from IP地址或者网段 配置访问控制的过程 创建认证用户的数据库 -htpasswd -c /etc/httpd/conf/.acluser 用户名 添加认证用户 -htpasswd /etc/httpd/conf/.acluser 用户名 添加用户授权配置 &lt;Directory &quot;/var/www/html&quot;&gt; .... AuthName &quot;ACL Directory&quot; ：自己定义显示信息 AuthType Basic ：认证类型 AuthUserFile /etc/httpd/conf/.acluser ：账号文件 requoire valid-user :有效用户可登陆 &lt;/Directory&gt; 重启服务 搭建虚拟主机虚拟主机分类： 基于域名的虚拟主机 基于IP地址的虚拟主机 基于端口的虚拟主机 配置文件： 主dns配置文件格式 options { directory &quot;/var/named&quot;; }; zone &quot;simpleware.com&quot; IN { type master; file &quot;simpleware.com.zone&quot;; allow-transfer { 192.168.0.100; }; \\允许谁获得区域配置文件 }; zone &quot;0.168.192.in-addr.arpa&quot; IN { type master; file &quot;192.168.0.zone&quot;; allow-transfer { 192.168.0.100; }; }; zone &quot;simplexue.com&quot; IN { type master; file &quot;simplexue.com.zone&quot;; allow-transfer { 192.168.0.100; }; }; 从dns配置文件格式 options { directory &quot;/var/named&quot;; }; zone &quot;simpleware.com&quot; IN { type slave; file &quot;slaves/simpleware.com.zone&quot;; \\区域文件保存位置 masters { 192.168.0.1; }; \\指定主dns服务器位置 }; zone &quot;0.168.192.in-addr.arpa&quot; IN { type slave; file &quot;slaves/192.168.0.zone&quot;; masters { 192.168.0.1; }; }; apach配置： NameVirtualHost 192.168.0.1:80 &lt;VirtualHost 192.168.0.1:80&gt; DocumentRoot /var/www/html/simpleware ServerName www.simpleware.com &lt;/VirtualHost&gt; &lt;VirtualHost 192.168.0.1:80&gt; DocumentRoot /var/www/html/simplexue ServerName www.simplexue.com &lt;/VirtualHost&gt;]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>WEB服务器</tag>
+        <tag>主从DNS</tag>
+        <tag>虚拟主机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Vim使用基础]]></title>
+    <url>%2F2019%2F03%2F04%2Fvim%2F</url>
+    <content type="text"><![CDATA[vim编辑器# vim 文件名 进入文件编辑器的命令模式 输入模式&lt;Esc&lt;&gt;a,i,o&gt;命令模式&lt;Esc&lt;&gt;:&gt;末行模式 末行模式： q：退出； w：保存； wq：保存并退出 q!：强制退出 在命令模式下常用的操作：方向键 | j,k,l,i： 上下左右移动光标 n+方向键 ： 光标向某方向移动n个字符 pgdn | Ctrl+F： 向下翻页 pgup | Ctrl+B： 向上翻页 home | ^ | 0 ： 光标跳至行首 end | $ ： 光标跳至行尾 1G | GG : 光标回首行 G ： 光标回末行 nG : 光标移至n行 x | Del ： 删除当前光标处单个字符 dd ： 剪切当前行 ndd ： 剪切从当前行开始的后面n行 d^ ： 删除当前光标之前的行 d$ : 删除当前行后面的行 yy ： 复制当前行 nyy : 复制从当前光标开始的后面n行 p ： 粘贴到当前行下 P ： 粘贴到当前行上 u ： 撤销最近一次操作 U ： 撤销当前所有操作 Ctrl+R ： 返撤销 ZZ ： 保存并退出当前编辑 末行模式常用操作：/word 从上到下在文中找“word”字符串 ?word 从下向上找“word”字符串 n 定位下一个匹配字 N 定位上一个匹配字 :set nu |nonu 显示|取消行号显示 ：w 保存修改内容 ：w /路径/文件 另存为 ：q 未修改退出 ：q! 放弃修改强制退出 ：wq 保存并退出 :e /路径/文件 打开新的文件编辑 :r /路径/文件 读入文件内容到当前编辑 :s /old/new 从当前开始的第一个“old”用“new”替换 :s /old/new/g 这一行所有的“old”都被“new”替换 :n,m s /old/new/g 从n到m行的“old”用“new”替换 :% s /old/new/g 整个文件的“old”用“new”替换 :s /old/new/c 末尾C命令：每一次替换操作都会让用户进行确认]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>Vim</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SSL和Mysql]]></title>
+    <url>%2F2019%2F03%2F04%2FSSL%E5%92%8Cmysql%2F</url>
+    <content type="text"><![CDATA[完善Apache的功能支持SSL模块 yum groupinstall &quot;web server&quot; 生成私钥 openssl genrsa -des3 -out linux.key 1024 生成请求文件 openssl req -new -key linux.key -out linux.csr 自签名 openssl x509 -req -days 365 -in linux.csr -signkey linux.key -out linux.crt 修改配置文件 vim /etc/httpd/conf.d/ssl.conf 根据105、112行，移动密钥 /etc/pki/tls/certs/localhost.crt /etc/pki/tls/private/localhost.key 重启服务 数据库SUN-&gt;UNIX系统、鹦鹉螺-&gt;java-&gt;mysql oracle:多平台，大型企业数据库，收费 sqlsever：微软 利用LINUX-&gt;mysql建立低能耗服务器（最低：1U，3个方格口） 建立SQL数据库端口号：3306 安装软件 yum install-server //安装服务端 yum install //安装客户端 启动服务 /etc/init.d/mysqld start 连接数据库 mysql -u root -p -u:用户名 修改用户密码 mysqladmin -u 用户名 -p password &apos;密码&apos; 针对数据库的操作查看数据库 show databases; 进入数据库 use 数据库名; 创建|删除数据库 create|drop table 库名; 针对表的操作查看数据库中的表 show tables; 查看表结构 desc 表名; 创建|删除表 create table 库名.表名 (字段信息); 字段信息：(字段1 长度属性,字段2 长度属性,primary key(字段1)); drop table 库名.表名; 修改表结构 alter table 库名.表名 drop| add| modify 字段信息; 在表中写入内容 insert into 库名.表名 (字段1，字段2...) values (值1，值2...) 修改表中的内容 update 库名.表名 set 字段1=值1 ,字段2=值2 where 条件 ; 删除表内容 delete from 库名.表名 where 条件; 查询表内容 select 字段 from 库名.表名 where 条件； mysql权限操作查看用户权限 show grants for 用户名@来源地址; 设置用户权限 grant 授权列表 on 库名.表名 to 用户名@来源地址 [identified by &apos;密码&apos;]; 授权列表：select delete all... 撤销用户权限 revoke 授权列表 on 库名.表名 from 用户名@来源地址; 远程访问数据库 mysql -u 用户名 -p -h 数据库服务器IP; 备份数据库目录：/var/lib/mysql/ 工具：mysqldump 备份数据库 mysqldump -u root -p 数据库名 表名 &gt;/备份路径/备份文件名 --all-databases //备份所有数据库 还原数据库 mysql -u root -p 还原成数据库名 &lt; /备份路径/备份文件名 默认的项user表:数据库中所有用户信息 安全模式启动数据库 mysqld_safe --skip-grant-tables &amp; //在后台已安全方式跳过授权列表启动mysql mysql -u root 以无密码的方式启动mqsql，查询root密码 select User,host,Password from mysql.user where User=&quot;root&quot;; 修改密码 update user set password=password(&apos;密码&apos;) where user=&apos;root&apos;; 刷新设置 flush peivileges;]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>SSL</tag>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[root密码及安全加固]]></title>
+    <url>%2F2019%2F03%2F04%2Froot%E5%AF%86%E7%A0%81%E4%BB%A5%E5%8F%8A%E5%AE%89%E5%85%A8%E5%8A%A0%E5%9B%BA%2F</url>
+    <content type="text"><![CDATA[破解root密码grub引导菜单编辑功能-e-第二行-e-在最后面加上“ 1|s|single” （rhgb：图形化引导） （quiet：静默模式） 删除root密码 # passwd -d root 安全加固grub引导文件 /boot/grub/grub.conf default=0：默认的启动优先级 timeout=5：进入引导菜单的等待时间 splashimage=...：背景图 hiddenmenu：隐藏菜单 在这儿加密码： password --encrypted 密文 （获取密文的命令：grub-crypt） title：目录 root：根 kernel：加载内核 initrd：初始化镜像盘 修复引导菜单记住逻辑卷路径：/dev/mapper/vg_jiangwei-lv_root # df -Th grub&gt; root (hd0,0) &gt;kernel /vmlinuz.. ro root=/dev/mapper/vg_jaingwei-lv_root rhgb quiet &gt;initrd /ini...img &gt;boot 救援模式加载光盘-开机-Esc-CD-ROM Drive-Rescue install sys-选择英语- 选择键盘类型-选择网络配置（NO）-继续-OK-OK-打开shell|磁盘检测|重启， 选择打开shell-chroot /mnt/sysimage/:改变根目录 单用户模式需要密码/etc/sysconfig/init 修改sushell-&gt;sulogin]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>root密码</tag>
+        <tag>root账户加固</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux中逻辑卷的使用]]></title>
+    <url>%2F2019%2F03%2F04%2Flinux%E4%B8%AD%E9%80%BB%E8%BE%91%E5%8D%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[在LINUX中建立逻辑卷创建物理卷： 1.查看操作系统中的物理卷 # pvscan 扫描系统中的物理卷 # pvdisplay 查看详细的物理卷信息 # pvcreate /dev/sd[bcd] 把sdb、c、d创建为物理卷 # pvremove /dev/sdb 删除物理卷 创建卷组： # vgscan 扫描卷组 # vgdisplay 查看详细的卷组信息 # vgcreate -s 4x：4的倍数 jw：卷组名 /dev/sd[bc] 创建卷组 -s：基本单元大小 # vgextend jw /dev/sdd 把忘记的sdd加入到jw卷组 # vgremove jw 移除卷组 创建逻辑卷： # lvscan 扫描逻辑卷 # lvdisplay 。。 # lvcreate -L 10G -n jw_1 jw 创建逻辑卷 -L:逻辑卷的大小（空间大小） -n：逻辑卷的名字 -l：武力单元个数 # lvremove jw_1 删除逻辑卷 # mkfs.ext4 格式化 #挂载 在线扩容： # lvextend -L 20G /dev/jw/jw_1 把物理卷扩容到20G # lvextend -L +10G /dev/jw/jw_1 添加10G到逻辑卷上 # resize2fs /dev/jw/jw_1 重新在线划分逻辑卷的大小 缩减逻辑卷卸载文件系统 # umount 文件系统路径 检查文件系统 # e2fsck -f 文件系统路径 文件系统的强制检查 缩减文件系统 # resize2fs 文件系路径 调整后的文件系统大小 缩减逻辑卷 # lvreduce -L 5G 文件系统路径 移除数据 # pvmove 需要移出的设备（sdb） 目的设备名（sdd） 缩减卷组 # vgreduce 卷组名 设备名 删除物理卷 # pvremove 设备 磁盘阵列的建立RAID0：提升读写速率，不容错，安全性最低，硬盘利用率高 RAID1：容错，不提升读写速率，硬盘利用率低(成本高) RAID5：容错，提升读写速率，硬盘利用率比较高（算法：异或） 组件虚拟磁盘阵列： # mdadm -C /dev/md0 -n3 -l5 /dev/sd[cde] -C ：创建新的阵列 -n ：利用的磁盘数量 -l ：RAID的等级 查看建立的阵列信息： # cat /proc/mdstat # mdadm -D /dev/md0 修改配置文件，让阵列永久生效： # vim /etc/mdadm.config ARRAY /dev/md0 UUID=... 创建pv.vg.lv.格式化.挂载. 虚拟机模拟磁盘故障设定磁盘为故障盘 # mdadm --manage /dev/md0 --fail /dev/sdc # cat /proc/mdstat 移除故障盘 # mdadm --manage /dev/md0 --remove /dev/sdc 添加磁盘 # mdadm --manage /dev/md0 --add /dev/sdf 停用磁盘阵列卸载设备 # umount /dev/md0 修改fstab文件 # vim /etc/fstab 修改mdadm.config文件 # vim /etc/mdadm.config 停用阵列 # mdadm -S /dev/md0 查看阵列使用状态 # /proc/mdstat]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>Linux逻辑卷</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[lamp平台和邮件平台搭建]]></title>
+    <url>%2F2019%2F03%2F04%2Flamp%E5%B9%B3%E5%8F%B0%E5%92%8C%E9%82%AE%E4%BB%B6%E5%B9%B3%E5%8F%B0%2F</url>
+    <content type="text"><![CDATA[安装软件包# yum install mysql-server httpd php php-mysql php-mbstring -y 修改配置文件：/etc/php.ini --229行 short_open_tag = on 启动脚本：/etc/init.d/httpd 配置文件：/etc/httpd/conf.d/php.conf 配置主页：/var/wwww/html vim index.php &lt;? phpinfo(); ?&gt; 邮件服务器连接邮件服务器：mta 端口：25 协议：SMTP，简单邮件传输协议 验证用户身份：mda 端口：110,143 协议：POP3,IMAP4 安装软件yum install postfix -y 配置文件:/etc/postfix/main.cf 75:myhostname = mail.xxx.com --主机名 83:mydomain = xxx.com --域名 99:myorigin = $mydomain --引用域名 113:inet_interfaces = all --关闭116行内容 164:mydestination = $mydomain, $... --接收邮件的域 419:home_mailbox = Maildir/ --存储邮件地址 重启服务： /etc/init.d/postfix restart 安装软件 yum install telnet 连接服务 telnet 192.168.0.1 25 mail from:tom@xxx.com --发件人 rcpt to:jw@xxx.com --收件人 data --开始写内容 object:hello --主题 i am tom. --内容 . --内容结束标志 quit --退出编辑 安装邮件客户端安装软件yum istall dovecot 配置文件 /etc/dovecot/dovecot.conf mail_location = maildir:~/Maildir ssl = no disable_plaintext_auth = no protocols = imap pop3 lmtp 启动服务 /etc/init.d/dovecot start 安装松鼠邮件系统把squirrelmail-webmail-1.4.22.tar安装包拷贝到桌面 &gt; 解压缩到/var/www/html/mial &gt; 运行./configure &gt; 设置域名、接收邮件服务器、接收邮件工具(dovecot)、发送邮件服务器 &gt; 保存-退出 汉化： 把汉化包拷贝到桌面 &gt;解压缩到桌面 &gt; 运行./install &gt;输入:/var/www/html/mail &gt;拷贝文件到目录里面 &gt; 运行mail下的./config &gt;选择10 &gt;语言设置成：ch_CN &gt; 语言编码：utf-8 &gt;保存、退出 创建文件夹： 在/var/local/sqirre..文件夹下面创建:attach 、data文件夹 &gt; &quot; 更改文件夹权限：chown apache:apache attach|data &quot;&gt; 重启服务 修改上传限制： 修改/etc/php.ini中的：upload_max_filesize | post_max_size来设置上传文件大小 建立邮件服务器的步骤：1.安装apache服务-httpd-/etc/httpd/conf/httpd.conf 2.安装DNS服务-bind-/etc/named.conf | /etc/named.rfc.. | /var/named/正反向解析域 3.搭建lamp平台-mysql-server httpd php php-mysql php-mbstring-/etc/php.ini | httpd | php.conf 4.安装postfix-postfix-/etc/postfix/main.cf 5.安装dovecot-dovecot-/etc/dovecot/dovecot.conf 6.客户端用windows：用客户端连接服务器 7.客户端用web页面：安装松鼠邮件系统-到/var/www/html/mail-安装汉化包-到/var/www/html/mail -创建文件夹：attach | data-修改权限-修改上传限制/etc/php.ini 8.重启所有服务]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>lamp平台</tag>
+        <tag>邮件平台</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DNS服务器搭建]]></title>
+    <url>%2F2019%2F03%2F04%2FDNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[安装软件yum install bind /etc/init.d/named 服务脚本 端口：53 /etc/named.conf 配置文件 /var/named/ 数据保存地方 &quot; 特别注意： 在建立正反向解析区域文件后必须修改属组属性 chgrp named 正反向解析与文件名 &quot; 主要配置文件全局配置(/etc/named.conf)：options { listen-on port 53 {192.168.0.100;}; :监听端口 directory &quot;/var/named&quot;; ：数据文件存放位置 allow-query {192.168.0.0/24;}; ：ACL网段 } 区域配置(/etc/named.rfc1912.zones)也可以配置在全局里面：zone &quot;simpleware.com&quot; IN ：域名 { type master; ：服务器角色 file &quot;simpleware.com.zone&quot; ：正向解析文件 allow-transfer {192.168.0.200;}; ：从属服务器IP地址 master {192.168.0.100;}; ：主服务器IP地址 } zone &quot;0.168.192.in-addr.arpa&quot; IN ：域名 { type master; ：服务器角色 file &quot;192.168.0.zone&quot; ：反向解析文件 allow-transfer {192.168.0.200;}; master {192.168.0.100;}; } 正向解析配置文件(/var/named/simpleware.com.zone)$TTL 1D :生存周期1天 @ IN SOA simpleware.com. root.simpleware.com.( 2016110901 ;serial //修改版本号 1M ;refresh // 2M ;retry 1H ;expire 3M); minimum //授权信息 NS dns1.simpleware.com. MX 10 mail.simpleware.com . dns1 A 192.168.0.1 mail A 192.168.0.1 www A 192.168.0.1 反向解析配置文件$TTL 1D :生存周期1天 @ IN SOA simpleware.com. root.simpleware.com.( 2016110901 ;serial //修改版本号 1M ;refresh // 2M ;retry 1H ;expire 3M); minimum //授权信息 NS dns1.simpleware.com. 1 PTR dns1.simpleware.com. 检查配置是否正确named-checkconf :检查主配置文件是否有误 -z :检查正反向解析文件是否配置正确 其中： NS:域名服务器 MX:邮件交换 A:正向解析 PTR:反向解析 CNAME:别名 ##缓存DNS服务器的搭建 根区域配置文件：/var/named/named.caoptions { //listen-on port 53 { 127.0.0.1; }; listen-on-v6 port 53 { ::1; }; directory &quot;/var/named&quot;; dump-file &quot;/var/named/data/cache_dump.db&quot;; statistics-file &quot;/var/named/data/named_stats.txt&quot;; memstatistics-file &quot;/var/named/data/named_mem_stats.txt&quot;; //allow-query { localhost; }; recursion yes; forwarders {114.114.114.114;}; :转发解析 }; zone &quot;.&quot; IN { type hint; file &quot;named.ca&quot;; };]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>DNS服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DHCP服务器搭建]]></title>
+    <url>%2F2019%2F03%2F04%2FDHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[DHCP服务器作用：动态分配IP地址 分配信息：IP地址、网关、子网掩码、DNS 端口号：67 ##搭建服务器过程 安装DHCP软件： # yum install dhcpd 启动服务： # vim /etc/dhcpd/dhcp.conf 末行模式下：/r /...(实例文件) 工作网段：subnet .... netmask .... { 地址池:range ....; DNS服务:option domain-name-servers ....; 网关:option routers ....; 默认租约时间:default-lease-time ..; 最长租约时间:max-lease-time ..; } 给单个主机设置IP地址 host hostnane { 主机MAC地址:hardware ethernet ::::; 分配给它的IP地址:fixed-address ....; } 重启服务： # service dhcp restart 客户机修改配置文件： /etc/sysconfig/network-scripts/sycfg-eth0 重启网卡： # ifdown eth0 # ifup eth0]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux基础</tag>
+        <tag>Linux</tag>
+        <tag>DHCP服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[网络前导知识]]></title>
+    <url>%2F2019%2F03%2F01%2F%E7%BD%91%E7%BB%9C%E5%89%8D%E5%AF%BC%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[计算机网络=通信技术+计算机技术。 通信子网,资源子网,通信协议 网络分类：一.按拓扑结构划分计算机为点，通信线路为线，成为拓扑结构 常见的结构：总线型 星型 环形 1.总线型：一根总线，所有节点全部连在总线上 优点：投资比较少,简单，易于扩充 缺点：故障率高，诊断困难， 2.星型：集线器为中心，其他节点连在中心 优点：结构简单，易于添加和减少，考验中心节点的处理能力 缺点：电缆长，对中心节点依赖性强 3.环形：总线为圈，其他节点连在总线上 优点：可靠性增加，传输介质可混合 缺点：出了故障直接瘫痪，故障诊断困难;网络重新配置比较困难 二.按网络覆盖范围分类1.局域网：一般在几十米到几公里范围内。（分类：以太网，令牌环网，FDDI等）局域网&gt;以太网 2.广域网：（几公里-十几公里） 3.城域网：（10-100公里） 三.按服务方式分类1.对等网优点：节省开支， 缺点：只适用于小规模，不便于管理，安全问题突出 2.客户机/服务器网络优点：统一管理，安全好 缺点：建设投入比较大 四.按传输介质分有线网、无线网 网络原理一.计算基础二进制,十进制,十六进制(之间的相互转化原理) 二进制转十进制:2^n+2^n+1... 十进制转二进制:除二取余数,倒着读 二.网络协议计算机之间通信的标准,或者叫规则,准则. 三.网络带宽与吞吐量模拟信号:HZ 数字信号:bps 带宽:理论情况下的传输速率 吞吐量:实际情况下的传输速率 四.信号和数据信号:带有数据信息的电频,光,模拟信号 模拟信号:波动性,持续性,不易衰减,抗干扰差,衰减后需放大同时放大噪声(放大器) 数字信号:离散型,跃变性,容易衰减,抗干扰能力强,放大后抑制噪声(中继器) 基带和基带传输 基带:一种数字传输方式 基带传输:使用直流脉冲方式传输,基带系统一次只能传输一个信号或者一个信道,可以双向传输 宽带和宽带传输 宽带:也是一种传输方式 宽带传输:使用射频模拟脉冲,能同时接入多条信道,只能单向传输,比基带系统传输距离远 五.网络介质双绞线(100米)(非屏蔽双绞线,屏蔽双绞线):四对相对独立,两两扭在一起的绝缘铜线组成的通信介质 特点:抗干扰能力强,绕线率越高,抗噪性越好,衰减越明显,价格便宜,使用灵活,有较高的传输速率,易遭物理损害. 双绞线线序: 568A:白绿,绿,白橙,蓝,白蓝,橙,白棕,棕 568B:白橙,橙,白绿,蓝,白蓝,绿,白棕,棕 同种设备相连:交叉线(一头是A,一头是B) 不同种设备相连:直通线(两头都是B) 常见的双绞线:CAT1(两个电线对),适用于语音通话;CAT2:4M;CAT3:10M以内;CAT4:10M以上;CAT5:100M;超五:200M以上 同轴电缆(粗缆和细缆):铜芯,绝缘层,屏蔽层,外壳组成的传输介质 特点:抗干扰比双绞线强,只支持较低的吞吐量,需要终端电阻器终结信号 粗缆(500米):10base5(10:10M,base:基带传输，5:500米)，比光缆便宜，比细缆贵，比双绞线贵【用收发器接收信号】 细缆（200米）：10base2（10:10M，base：基带传输，2:200米），比粗缆便宜，比双绞线贵【用BNC T型连接器接出信号】 光缆光导纤维：极细的玻璃纤维或者石英纤维的传输介质，用激光二极管或者发光二极管在通电后产生光信号。 （单模光纤，多模光纤）单模光纤：【只传递一条光信号】更细的芯，不易发散，只用激光作为光源，适合长距离传输 多模光纤：【可以同时传递多条光信号】比单模光纤粗（10倍左右），允许更大的光发散或信号衰减，使用LED作为光源，适合长距离传输，但是比单模短。 吞吐量：10G以上，速率快，成本高， 特性：连接器：SC,ST,FC,LS;抗噪性强 无线网电磁波为传输介质 设备:无线交换机,无线路由器,无线网卡,无线接入点 网络设备中继器作用:发大信号,工作于物理层 集线器工作于：物理层（第一层） 作用:集线功能,信号再生 缺点:集线器是一个冲突域,工作越多,冲突越多,使用的是:CMSA/CD(载波监听,多点接入,碰撞检测). 网桥作用:一种存储转发设备,链接类型相似的网络 能够根据需要,转发或者不转发以太帧 网桥不改变以太帧的源和目的地址 交换机工作于：数据链路层（第二层） 作用：使用硬件桥连帧（利用MAC地址来转发帧），有多路径底板和某种交换结构，用于交换多个网段的帧，是一个快速网桥 特点：每个接口是一个冲突域，减少冲突，不能隔离广播，连接两端必须是使用相同的访问方法 三层交换机和路由器的区别：三层交换机，数据交换能力强，路由能力差，接口多，用于数据交换量大的内网 路由器：数据交换能力差，路由能力强，接口少，用于连接内网和外网（不同网络之间的通信） 路由器工作于：网络层（第三层） 作用：连接不同网络，实现通信。 特点：支持多个链路的复杂网络，决定数据包在网络中如何传递；能隔离广播域，连接两端必须使用相同的通信协议 工作原理：收到数据包，查看数据包的IP地址，对比自己的路由表，按路由表选择网路路径，并转发，没有就丢弃。 网关用于连接不同通信协议的软件，一般是硬件上面安装软件实现。 作用：实现协议转换 防火墙作用：隔离两个或者多个网络，限制网络之间的互访，保护内网的用户和数据 入侵检测（IDS）作用：网络安全设备，对网络、系统运行状态进行监听以及及时发现攻击企图，与防火墙进行联动。只能检测不能防御 入侵防御系统（IPS）作用：突破传统的IDS只能检测不能防御的局限性，提供了完整的入侵防御解决方案 OSI参考模型什么是OSI参考模型分别是：应用层，表示层，会话层，运输层，网络层，数据链路层，物理层 传输的数据单元：物理层：比特；数据链路层：帧；网络层：数据包（IP数据包）；传输层：数据段 各层作用：物理层：比特流与电信号的转换 数据链路层：数据帧和比特流之间的转化 网络层：进行路由工作 传输层：数据完整性检测 会话层：连接的建立，断开，保持工作 表示层：接收不同形态的表示信息 应用层：针对每个应用的协议 OSI的作用：让厂家生产的产品标准化，便于通信 传输层：添加TCP/UDP头（报文） 网络层：添加IP包头（数据包） 数据链路层：添加MAC子层和FCS（帧校验序列）包尾 以太网技术（局域网&gt;以太网）标准（10M），快速（100M)，高速(1000M)，10G 定义：以太网是典型的局域网技术 作用：解决共享网段上多台计算机之间的数据传输时的冲突问题，使用的技术：CSMA/CD 以太网的帧格式：48位，24位厂商代码，24序列码，一般使用16机制计数（MAC地址） CSMA/CD：发送时载波监听，判断是否空闲，多点发送时进行碰撞检测，如果碰撞，等待随机时间，重新发送 以太网的自动协商机制：通信双方根据双方情况，自动协商双工模式和速率等参数。 双工模式：全双工，半双工 以太网的标准：IEEE 802.3 以太网交换技术：节点数量越多，冲突越多，广播越多，适当添加交换机抑制冲突域，路由器抑制广播域 网桥/交换机：会将一个冲突域划分为两个冲突域 交换机转发模式：直通式：收到直接转发，不存储 存储转发：收到，先存存储，等到整个帧收完了再转发 抑制广播：使用三层设备 各层协议： 应用层：HTTP,FTP,TFTP,SMTP,SNMP,DNS 传输层：TCP,UDP 网络层：ICMP,IGMP,IP,ARP,RARP 数据链路层和物理层：由底层网络定义的协议 TCP五层模型和OSI七层模型的特点： 相同：都是以协议栈的概念为基础，协议栈中的协议彼此相互独立，下层为上层提供服务 不同点：OSI适用于各中协议栈，TCP/IP只使用于自己，层次数量不同 分层的作用：将细化网络通信，便于部件设计和故障排除；便于各种类型网络软硬件通信；防止某一层改变影响其他层 服务类型： 面向连接服务：先建立连接，在传输数据；数据传输过程中不携带目的地址；保证数据传输的可靠性，传输完后断开连接（TCP） 无连接服务：不建立连接，直接发送数据，每个报文都有目的地址，速度快，不保证传输的可靠性（UDP） TCP/IP协议组TCP ：面向连接的协议，提供可靠的数据传输 UDP：采用面向无连接的通信，速度快，不可靠 IP协议 ：负责寻找目标计算机的地址并路由数据包 ICMP ：负责诊断和报告数据传输错误，如Ping ARP ：地址解析协议，根据目标计算机的IP地址解析出目标计算机的MAC地址，并保存在缓存中。 RARP：逆地址解析协议。 HTTP：超本文传输协议，用于传输html格式的文件 HTTPS：使用SSL加密技术传输文件 FTP：文件传输协议 SMTP：简单邮件传输协议 NNTP：网络新闻传输协议 HTML：超文本标记语言 DHTML：动态HTML，可创建交互页面 TCP包头 源端口号16位：标示主机发起传输的应用程序 目的端口号16位：标示主机上传输要求达到的应用程序 序列号32位：用来标示从TCP源端口向TCP目标发送的数据字节流，表示这个报文里的第一个数据字节 确认号32位：ACK确认标志位为1时使用，表示目标端口所期望收到源端口的下一个数据字节 头部长度、数据偏移4位：表示TCP头部占多少字节，最少20，最多60 预留6位 标志位（U,A,P,R,S,F）各占1位： URG：紧急指针 ACK：确认指针 PSH：直接交付指针 RST：重连指针 SYN：连接指针 FIN：释放指针 窗口大小16位：表示本机期望一次接收的字节数，进行流量控制 校验和16位：对整个TCP报文进行的校验和计算，验证数据的完整性 紧急指针字段16位：一个偏移量，和序列号中的值相加，表示紧急数据最后一个字节的序号 选项和填充字段32位：用于窗口控制，时间戳等 TCP工作原理三次握手： 四次挥手： IP地址 IP地址：互联网上每一台主机的唯一标示符 严格的说：IP地址不是针对主机的，而是针对设备接口的 3类IP地址：A：1.-126. B：128.-191. C：192.-223. 全0：网络回路；全1：广播 私网地址：A：10.0.0.0-10.255.255.255 B：172.16.0.0-172.31.255.255 C：192.168.0.0-192.168.0.0 计算子网掩码xxx.xxx.xxx.xxx /26 表示前面26位都是网络地址，子网掩码：前26位都是1 几个重要的分层作用网络层作用：有效的解决一种网络互联的问题：屏蔽异种网络，全网统一标示； 设计思想：高效，简洁，提供不可靠链接（尽力传输），信任物理信道的传输质量，由传输层进行纠错，点对点通信； 核心问题：最有路径选择 传输层作用：使源主机和目标主机对等实体之间会话，提供端到端的连接。 典型协议：TCP，误差控制，流量控制 UDP，无连接服务 域名：域名和IP是一对多的关系：一个IP有多个域名]]></content>
+      <categories>
+        <category>网络基础知识</category>
+      </categories>
+      <tags>
+        <tag>网络基础</tag>
+        <tag>路由与交换</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows系统基础及文件系统]]></title>
     <url>%2F2019%2F02%2F27%2F%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%89%8D%E7%9E%BB%2F</url>
     <content type="text"><![CDATA[计算机的组成主板、CPU、硬盘、内存、显卡、声卡、网卡、光驱、机箱、显示器等 CPU：中央处理器 主频：处理速度 外频：和外面的数据交换速度 前段总线频率：CPU与内存的数据交换速度 64位技术：CPU一次处理64位数据 缓存：解决内存与CPU的速度差异 多核心技术：CPU内核有多个，同时处理数据 接口：与各种其它原件的数据接口 内存：解决硬盘与CPU的读写速度差异 北桥芯片：负责快速存取设备之间的数据交换（内存、缓存、显卡等） 南桥芯片：负责慢速设备之间的数据交换（I/O设备，USB，vlan等） 硬盘接口：SATA、IDE、SCSI、SAS 按网络管理方式分类对等网：无集中的管理，适用于小型的网络，网络性能差 ，文件分散管理，计算机资源占用大 客户机-服务器：集中统一管理，结构简单 windows版本： win95：成为正式的操作系统 winxp：最成功的操作系统 win7：成功的版本 windows服务器版本： win2008的各种版本：标准版，企业版，数据中心版，web版，针对安腾64位处理器版本 标准版：具有主流服务器的所有功能 企业版：提供更高的可用性和可靠性 数据中心版：支持更大的内存与多处理器 web版：针对web的服务器 win2008网络组件： 网络适配器：网卡 协议 网络服务与客户端 查看netBIOS计算机名称：\\ip地址 工作组： 计算机的地位都是平等的 每一台计算机都独立维护自己的资源，没有集中式管理 计算机本地存储账户信息 一个账户只能登陆一台计算机 网络规模限制小于10台计算机 查看用户的sid cmd模式：-whoami/logonid windows相关联的用户账户：system、local service、network service 组的概念： 组是账号的集合 方便管理 当一个用户加入某个组的时候，该用户会继承改组的所用权限 默认组中比较重要的组： administrator：管理员组 guests：来宾组，基本没什么权限 powre users：高权限用户，有一定的管理权限 users：标准用户组，最安全的组，只有修改自己资源的权限 ALP：用户账户、本地组和权限的规则 建立用户 将用户添加进组 给组分配权限 文件权限windows常见的文件系统 FAT:DOS、win95、win98、win2000、winxp。最大可管理2GB分区 FAT32：winxp、win2000/2003。理论最大2T，实际支持32G，单个文件最大4G NTFS：现在的操作系统。分区最大2T，单个文件最大64G linux：ext3、ext4 NTFS文件系统的优点： 1.可以对单个文件或文件夹设置权限 2.支持更大的磁盘容量，更大的单个文件 3.支持加密与压缩 4.活动目录需要使用NTFS 5.支持磁盘配额 获取NTFS文件系统： 格式化选择格成NTFS文件系统 命令行：-convert x: /fs:ntfs 使用第三方软件 NTFS文件系统的权限： 可针对不同的用户或者组设置不同的权限 只有被授予权限的用户或者组才能访问文件 权限有： 完全控制：能够执行所有操作 修改：修改、删除文件或者文件夹 读取和运行：读取内容，运行程序 列出文件夹目录：列出文件夹下所有的文件 读取：读取文件夹或文件的内容 写入：创建文件或文件夹 特殊权限：与数据无关的其他权限 特殊权限： 与安全选项卡相关： 读取权限：能够查看文件或这文件夹的权限信息 更改权限：能够更改文件或者文件夹的权限信息 取得所有权：能够控制文件或者文件夹 NTFS文件系统的权限组合： 权限相加：用户W,组R--》用户：W+R 权限继承：文件会继承文件夹的权限，文件夹会继承磁盘的权限 强制继承：在高级安全设置上，从父项继承为从上继承；将后代的权限替换父项的权限为强制继承 复制：继承目的文件夹的权限 移动：同盘下：保留原来权限；不同盘：继承目的文件夹的权限]]></content>
@@ -15,7 +296,7 @@
   <entry>
     <title><![CDATA[linux系统基础]]></title>
     <url>%2F2019%2F02%2F26%2FLinux%E7%B3%BB%E7%BB%9F%2F</url>
-    <content type="text"><![CDATA[Unix人物： 肯·汤姆逊、丹尼斯·离奇 --C语言 Richard M.Stallman --GNU社区，开源，GPL协议 塔能鲍姆 --MINIX Linus Torvalds --Linux:GNU/Linux,1992年 软件： Debian流： Debian版Linux：服务器版 ubuntu版Linux：桌面版 --由Debian改成桌面版 Kali版Linux:渗透，攻防 --由Debian改的 红帽流： Red Hat 企业版：企业版服务器 Fedora 社区版：个人版操作系统 CentOS 社区版：社区企业操作系统 应用Linux123456789101112# cat /proc/meminfo 查看内存信息# cat /proc/cpuinfo 查看CPU信息# fdisk -l 查看硬盘信息# poweroff 关机# shutdown -h now 关机# init 0 关机# reboot 重启# shutdown -r now 重启# init 6 重启# uname -r 查看Linux内核# setup 进入系统设置-FireWall-去掉星号（光标在星号处，空格）-保存# gedit /etc/selinux/config --进入记事本（File System-etc-Selinux-config:把enforcing&gt;&gt;&gt;disable） 安装VM toos点击虚拟机的虚拟机：安装Vm tools 将压缩包拷贝到桌面-右键解压缩(Extract here)-进入解压目录- 在目录内右键打开命令行-输入./[绿色文件名] -d（默认安装）-等待安装完成- 关机-建立快照 Linux基本信息Linux的硬盘标示方法SDA sd表示硬盘接口类型sata/scsi/usb a表示第几块物理硬盘a1/b2/c3... 内核表示2.6.32（官方内核） 2：主版本号 6：次版本号（奇数：开发版内核；偶数：稳定版内核） 32：修订次数]]></content>
+    <content type="text"><![CDATA[Unix人物： 肯·汤姆逊、丹尼斯·离奇 --C语言 Richard M.Stallman --GNU社区，开源，GPL协议 塔能鲍姆 --MINIX Linus Torvalds --Linux:GNU/Linux,1992年 软件： Debian流： Debian版Linux：服务器版 ubuntu版Linux：桌面版 --由Debian改成桌面版 Kali版Linux:渗透，攻防 --由Debian改的 红帽流： Red Hat 企业版：企业版服务器 Fedora 社区版：个人版操作系统 CentOS 社区版：社区企业操作系统 应用Linux# cat /proc/meminfo 查看内存信息 # cat /proc/cpuinfo 查看CPU信息 # fdisk -l 查看硬盘信息 # poweroff 关机 # shutdown -h now 关机 # init 0 关机 # reboot 重启 # shutdown -r now 重启 # init 6 重启 # uname -r 查看Linux内核 # setup 进入系统设置-FireWall-去掉星号（光标在星号处，空格）-保存 # gedit /etc/selinux/config --进入记事本（File System-etc-Selinux-config:把enforcing&gt;&gt;&gt;disable） 安装VM toos点击虚拟机的虚拟机：安装Vm tools 将压缩包拷贝到桌面-右键解压缩(Extract here)-进入解压目录- 在目录内右键打开命令行-输入./[绿色文件名] -d（默认安装）-等待安装完成- 关机-建立快照 Linux基本信息Linux的硬盘标示方法SDA sd表示硬盘接口类型sata/scsi/usb a表示第几块物理硬盘a1/b2/c3... 内核表示2.6.32（官方内核） 2：主版本号 6：次版本号（奇数：开发版内核；偶数：稳定版内核） 32：修订次数]]></content>
       <categories>
         <category>Linux</category>
       </categories>
