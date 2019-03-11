@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="BurpSuite,翻译,BurpSuite介绍,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="@@@@@第一行@@@@ *说明： 1.网上大多数译文都是在图片上进行的，使用不大方便。也是为了加深自己对burp的了解。  2.此译文为机译加自己简单校对，个人英语很渣，故有错误请复制下来自行修改，如告知我感激不尽  3.此译文来源：Two-Ha，个人网络备忘录：https://two-ha.github.io/* -txt文档索引—-菜单—行号———- 菜单栏-----------------">
+<meta name="keywords" content="BurpSuite,翻译,BurpSuite介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BurpSuite界面中英文对照TxT版">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/burp中英文对照单/index.html">
+<meta property="og:site_name" content="二哈">
+<meta property="og:description" content="@@@@@第一行@@@@ *说明： 1.网上大多数译文都是在图片上进行的，使用不大方便。也是为了加深自己对burp的了解。  2.此译文为机译加自己简单校对，个人英语很渣，故有错误请复制下来自行修改，如告知我感激不尽  3.此译文来源：Two-Ha，个人网络备忘录：https://two-ha.github.io/* -txt文档索引—-菜单—行号———- 菜单栏-----------------">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-11T01:59:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BurpSuite界面中英文对照TxT版">
+<meta name="twitter:description" content="@@@@@第一行@@@@ *说明： 1.网上大多数译文都是在图片上进行的，使用不大方便。也是为了加深自己对burp的了解。  2.此译文为机译加自己简单校对，个人英语很渣，故有错误请复制下来自行修改，如告知我感激不尽  3.此译文来源：Two-Ha，个人网络备忘录：https://two-ha.github.io/* -txt文档索引—-菜单—行号———- 菜单栏-----------------">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/11/burp中英文对照单/">
+
+
+
+
+
+  <title>BurpSuite界面中英文对照TxT版 | 二哈</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">二哈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/burp中英文对照单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Two-Ha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二哈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BurpSuite界面中英文对照TxT版</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T08:43:10+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/渗透测试工具/" itemprop="url" rel="index">
+                    <span itemprop="name">渗透测试工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>@@@@@第一行@@@@</p>
+<p>*说明：</p>
+<pre><code>1.网上大多数译文都是在图片上进行的，使用不大方便。也是为了加深自己对burp的了解。
+
+2.此译文为机译加自己简单校对，个人英语很渣，故有错误请复制下来自行修改，如告知我感激不尽
+
+3.此译文来源：Two-Ha，个人网络备忘录：https://two-ha.github.io/*
+</code></pre><p>-txt文档索引—-菜单—行号———-</p>
+<pre><code>菜单栏-------------------------33
+burp栏-------------------------35
+Project栏----------------------48
+intruder栏---------------------63
+Repeater栏---------------------91
+window栏-----------------------144
+help栏-------------------------156
+模块栏-------------------------172
+dashboard模块------------------173
+target模块---------------------278
+proxy模块----------------------322
+intruder模块-------------------468
+repeater模块-------------------796
+sequencer模块------------------806
+decode模块---------------------855
+comparer模块-------------------861
+Extender模块-------------------872
+project options模块------------920
+user options模块---------------974
+</code></pre><h1 id="菜单栏："><a href="#菜单栏：" class="headerlink" title="菜单栏："></a>菜单栏：</h1><hr>
+<h2 id="Burp栏："><a href="#Burp栏：" class="headerlink" title="Burp栏："></a>Burp栏：</h2><pre><code>search：搜索
+configuration library:配置库
+user options：用户选项
+    restore defaults:恢复默认设置
+    load user options；载入用户选项
+    save user options：保存用户选项
+burp infiltrator:是一种用于检测目标Web应用程序的工具
+burp clickbandit:一种用于生成点击劫持攻击的工具
+burp collaborator client:手动测试期间使用Burp Collaborator的工具
+exit:退出
+</code></pre><hr>
+<h2 id="Project栏："><a href="#Project栏：" class="headerlink" title="Project栏："></a>Project栏：</h2><pre><code>Project options：工程选项
+    restore defaults:恢复默认配置
+        all：所有的
+        target:目标
+        Proxy：代理
+        Repeater：中继器/转发器
+        Sequencer:定序器
+        Project options:工程选项
+    rename:重命名
+    save copy:保存复制
+    import project file:载入工程文件
+    import legacy state file:载入旧的状态文件
+</code></pre><hr>
+<h2 id="intruder栏"><a href="#intruder栏" class="headerlink" title="intruder栏:"></a>intruder栏:</h2><pre><code>start attack:开始攻击
+open saved attack:打开以保存的攻击
+scan defined insertion points:扫描定义的插入点
+send to Repeater:发送给中继器/转发器
+save attack config:保存攻击配置
+    with payload positions:带着负载位置
+    without payload positions:不带负载位置
+load attack config:载入攻击配置
+    with payload positions:同上
+    without payload positions:同上
+copy attack config:复制攻击配置
+    with payload positions:同上
+        to tab1:到标签1
+        to new tab:到新的标签页
+    without payload positions:同上
+        to tab1:同上
+        to new tab:同上
+new tab behavior:新标签页的动作
+    use default attack configuration:用默认的攻击配置
+    copy configuration from first tab:从第一标签页复制配置
+    copy configuration from last tab:从最后一个标签页复制配置
+automatic payload positions:自动负载位置
+    replace base parameter value:替换基本参数的值
+    append to base parameter value:追加打基本参数值
+configure predefined payload lists:配置预定义的负载的列表
+</code></pre><hr>
+<h2 id="Repeater栏："><a href="#Repeater栏：" class="headerlink" title="Repeater栏："></a>Repeater栏：</h2><pre><code>update content-length:更新内容长度
+unpack gzip/deflate:解压
+follow redirections：跟随重定向
+    never：从不
+    on-site only:仅同一网站这一次
+    in-scope only:仅在范围内
+    always:始终
+process cookies in redirections；在重定向中处理cookie
+view:视图
+    top/bottom split:上下分离
+    left/right split:左右分离
+    tabs:标签
+action:动作
+    scan:扫描
+    send to intruder:发送给入侵模块
+    send to repeater:发送给转发器模块
+    send to sequencer:发送给序列发生器
+    send to comparer:发送给对比模块
+    send to decoder:发送给编码模块
+    request in browser:在浏览器中浏览
+        in original session:在原始会话中
+        in current browser session:在当前会话中
+    ------------------------
+    engagement tools:参与工具
+        find references:查找运用
+        discover content:发现内容
+        schedule task:计划任务
+        generate csrf poc:生成csrf poc
+    ------------------------
+    change request method:变更请求方法
+    change body encoding:改变body编码
+    copy URL:复制网址
+    copy as curl command:复制为curl命令
+    copy to file:复制到文件
+    paste from file:从文件粘贴
+    save item:保存为项目
+    -------------------------
+    save entire history:保存全部历史
+    paste url as request:粘贴网址作为请求
+    add to site map:添加到网站地图
+    -----------------------
+    convert selection:转化选定
+    url-encode as you type:使用你的类型编码网址
+    -----------------------
+    cut:剪切
+    copy:复制
+    paste:粘贴
+    ----------------------
+    message editor documentation:消息
+    burp repeater documentation:burp转发器文件
+</code></pre><hr>
+<h2 id="window栏："><a href="#window栏：" class="headerlink" title="window栏："></a>window栏：</h2><pre><code>detach dashboard:分离仪表栏
+detach target:分离目标
+detach proxy:分离代理
+detach intruder:分离入侵
+detach repeater:分离转发器
+detach sequencer:分离定序器
+detach decoder:分离编码
+detach comparer:分离对比
+detach extender:分离扩展栏
+</code></pre><hr>
+<h2 id="help栏："><a href="#help栏：" class="headerlink" title="help栏："></a>help栏：</h2><pre><code>burp suit documentation:burp适配文档
+getting started:入门指南
+using burp suite:使用burp套件
+------------------
+support center:支持中心
+release notes:版本说明文件
+report bug:报告bug
+diagnostics:诊断
+-----------------
+license:授权信息
+check for updates:检查升级
+download other installers:下载其他安装程序
+clean burp from computer:清除电脑上的BURP
+</code></pre><hr>
+<h1 id="模块栏："><a href="#模块栏：" class="headerlink" title="模块栏："></a>模块栏：</h1><h2 id="dashboard模块：仪表模块"><a href="#dashboard模块：仪表模块" class="headerlink" title="dashboard模块：仪表模块"></a>dashboard模块：仪表模块</h2><h3 id="new-scan：新的扫描"><a href="#new-scan：新的扫描" class="headerlink" title="new scan：新的扫描"></a>new scan：新的扫描</h3><pre><code>scan details:扫描详细信息
+    scan type:扫描类型
+        crawl and audit:爬取和审计
+        crawl:爬取
+    urls to scan:扫描网址
+    detailed scope configuration:详细的配置范围
+    use advanced scope control:使用高级范围控制
+        included url prefixes:包含网址前缀
+        excluded url prefixes:排除网址前缀
+        select from library:从记录中选择
+-----------------
+scan configuration:扫描配置
+下面解释：选择配置以控制如何执行扫描。您可以选择多个配置，这些配置将依次应用于确定扫描所使用的最终配置。如果没有选择配置，那么将使用Burp Scanner的默认设置。
+-----------------
+application login:应用程序登录
+下面解释：指定应该提交给任何登录函数的帐户凭据。爬虫将使用这些来发现登录函数背后经过身份验证的内容。
+-----------------
+resource pool:资源库
+下面解释：指定将在其中运行扫描的资源池。资源池用于跨多个任务管理系统资源的使用。
+    use existing resource pool:使用存在的资源池
+    create new resource pool:创建新的资源池
+        name:名称
+        maximum concurrent requests:最大并发请求
+        delay between requests:请求之间的延迟
+</code></pre><h3 id="new-live-task-新的现场任务"><a href="#new-live-task-新的现场任务" class="headerlink" title="new live task:新的现场任务"></a>new live task:新的现场任务</h3><pre><code>    scan detail：扫描详细信息
+        task type:任务类型
+            live audit：现场审计
+            live passive crawl：现场被动爬行
+        tools scope：工具范围
+            proxy:代理
+            repeater:转发器
+            intruder:入侵
+        URL scope：网址范围
+            everything:任何事情
+            suite scope:套件范围
+            custom scope：自定义范围
+        deduplication:两份
+        下面解释：选择要处理的项是否根据其URL和参数名称进行重复数据删除。使用齿选项可避免多次扫描同一项。
+            ignore duplicate items based on url and parameter names:忽略基于url和参数名称的重复项
+    ----------------------------
+    scan configuration:扫描配置
+    下面解释：选择配置以控制如何执行扫描。您可以选择多个配置，这些配置将依次应用于确定扫描所使用的最终配置。如果没有选择配置，那么将使用Burp Scanner的默认设置。
+    -----------------
+    resource pool:资源库
+    下面解释：指定将在其中运行扫描的资源池。资源池用于跨多个任务管理系统资源的使用。
+        use existing resource pool:使用存在的资源池
+        create new resource pool:创建新的资源池
+            name:名称
+            maximum concurrent requests:最大并发请求
+            delay between requests:请求之间的延迟
+小齿轮设置项：
+    task auto-start:自动开始任务
+        create new tasks running:创建正在运行的新任务
+        create new tasks paused:创建暂停的新任务
+    resource pools:资源池
+    下面解释：资源池是一组共享网络资源配额的任务。每个资源池都可以用其配置。自己的限制设置，控制可以并发发出的请求的数量，或请求的速率，或两者兼而有之。
+        resource pool:资源池
+        running tasks:运行的任务
+        max concurrent requests:最大并发请求
+        delay between requests:请求之间的延迟
+</code></pre><h3 id="tasks界面其他释译："><a href="#tasks界面其他释译：" class="headerlink" title="tasks界面其他释译："></a>tasks界面其他释译：</h3><pre><code>running:正在运行的
+paused:暂停的
+finished:完成的
+live passive crawl from proxy(all traffic):从代理模块实时被动的爬取-所有流量
+add links.add item itself,same domain and urls in suite scope:添加链接，模块中同一域和网址添加的项目
+    capturing:捕捉
+    items added to site map:添加到网站地图的项目
+    responses processed:响应处理
+    responses queued:响应队列
+live audit from proxy(all traffic):从代理的实时审计-所有流量
+    audit checks-passive:审计 被动式的检查
+    capturing:捕捉
+    issues:问题
+    requests:请求
+    errors:错误
+</code></pre><h3 id="event-log-日志界面释译"><a href="#event-log-日志界面释译" class="headerlink" title="event log:日志界面释译"></a>event log:日志界面释译</h3><pre><code>critical:危险的
+error：错误的
+info：信息
+debug：调试
+time：时间
+type：类型
+source:源
+message:消息
+</code></pre><h3 id="issue-activity-问题活动界面释译"><a href="#issue-activity-问题活动界面释译" class="headerlink" title="issue activity:问题活动界面释译"></a>issue activity:问题活动界面释译</h3><pre><code>filter:过滤
+high:高
+medium:中
+low:低
+info：信息
+certain:确定的
+firm:稳定的
+tentative:实验性、假设的
+task:任务 
+time：时间
+action:动作
+issue type:问题类型
+host:主机
+advisory:报告
+</code></pre><hr>
+<h2 id="target模块："><a href="#target模块：" class="headerlink" title="target模块："></a>target模块：</h2><h3 id="site-map-网站地图"><a href="#site-map-网站地图" class="headerlink" title="site map:网站地图"></a>site map:网站地图</h3><pre><code>过滤器:隐藏未找到的项目;隐藏CsS、图像和一般二进制内容;隐藏4 xx响应;隐藏空文件夹。
+contents:内容
+    host:主机
+    method:方法
+    url：网址
+request:请求 
+    raw：原始数据
+    hex：十六进制
+response:响应
+    raw：原始数据
+    hex：十六进制
+issues:问题
+advisory:报告 
+</code></pre><h3 id="scope-范围"><a href="#scope-范围" class="headerlink" title="scope:范围"></a>scope:范围</h3><pre><code>target scope:目标范围
+    齿轮三项：
+        restore defaults:恢复默认设置
+        load options:载入选项
+        save options:保存选项
+    释译：定义当前工作的范围内目标。这种信任会影响整个套件中工具的行为。最简单的方式配置范围是浏览到您的目标和使用上下文菜单在网站地图中去包括或排除URL路径。
+    use advanced scope control:使用高级范围控制
+    include in scope:包含的范围
+        add:添加
+        edit:编辑
+        remove:移除
+        paste url:粘贴网址 
+        load:载入 
+        enabled:允许的
+        prefix:前缀
+    excluded from scope:排除的范围
+        enabled:允许的
+        prefix:前缀
+</code></pre><h3 id="issue-definitions-定义的问题"><a href="#issue-definitions-定义的问题" class="headerlink" title="issue definitions:定义的问题"></a>issue definitions:定义的问题</h3><pre><code>齿清单包含Burp Scanner可以检测到的所有问题的定义。
+下面是一些漏洞定义，不释译。右边栏是漏洞的描述等，有以下关键词：
+    description:描述
+    remediation:整改
+    vulnerability classifications:脆弱性分类
+    typical severity:严重性
+    type index:类型代码
+</code></pre><hr>
+<h2 id="proxy模块：代理模块"><a href="#proxy模块：代理模块" class="headerlink" title="proxy模块：代理模块"></a>proxy模块：代理模块</h2><h3 id="intercept-拦截"><a href="#intercept-拦截" class="headerlink" title="intercept:拦截"></a>intercept:拦截</h3><pre><code>forward:允许
+drop:丢弃
+intercept is on/off:开启/关闭拦截
+action:动作--参考Repeater栏的action。
+raw：原始数据
+hex：十六进制
+comment this item:评论这个项目
+</code></pre><h3 id="http-history-历史http"><a href="#http-history-历史http" class="headerlink" title="http history:历史http"></a>http history:历史http</h3><pre><code>过滤器:隐藏CSS，图像和一般的二进制内容
+#：编号
+host:主机
+method:方法
+url:网址 
+params:参数
+edited:编辑
+status:状态
+length:长度
+mime type:消息实体
+extension:扩展
+</code></pre><h3 id="websockets-history-网页接口历史"><a href="#websockets-history-网页接口历史" class="headerlink" title="websockets history:网页接口历史"></a>websockets history:网页接口历史</h3><pre><code>过滤器：展示所有项目
+#：编号
+url：网址
+direction:用法
+edited:编辑
+length:长度
+comment:描述
+ssl:SSL
+time：时间
+listener port:监听端口
+</code></pre><h3 id="options：选项"><a href="#options：选项" class="headerlink" title="options：选项"></a>options：选项</h3><pre><code>Proxy Listeners:代理监听项
+    齿轮三项：
+        restore defaults:恢复默认设置
+        load options:载入选项
+        save options:保存选项
+    add:添加
+    edit:编辑
+    remove:移除
+    running:运行 
+    interface:接口
+    invisible:隐藏 
+    redirect:重定向
+    certificate:证书
+    Burp的每个安装都会生成自己的CA证书，代理侦听器在协商SSL连接时可以使用这些证书，你可以导入或者导出这些证书，以便在其他地方或者其他BURP中使用
+    import/export CA certificate:导入/导出CA证书
+    regenerate CA certificate:生成CA证书
+</code></pre><h3 id="intercept-client-requests-拦截客户端请求"><a href="#intercept-client-requests-拦截客户端请求" class="headerlink" title="intercept client requests:拦截客户端请求"></a>intercept client requests:拦截客户端请求</h3><pre><code>    齿轮三项：
+        restore defaults:恢复默认设置
+        load options:载入选项
+        save options:保存选项
+    使用这些设置来控制在Intercept选项卡中拦截哪些请求进行查看和编辑。
+    intercept requests based on the following rules:根据以下规则拦截请求
+    add:添加
+    edit:编辑
+    remove:移除
+    up：上移
+    down:下移
+    enabled:允许的
+    operator:操作
+    match type:匹配类型
+    relationship:关联
+    condition:条件
+    automatically fix missing or superfluous new lines at end of request:在请求结束时自动修复丢失或多余的新行
+    automatically update content-length header when the request is edited:当请求被编辑时，自动更新头部的内容长度字段
+-----------------
+intercept server responses:拦截服务器响应
+    齿轮三项：
+        restore defaults:恢复默认设置
+        load options:载入选项
+        save options:保存选项
+    使用这些设置来控制在Intercept选项卡中拦截哪些响应进行查看和编辑。
+    intercept responses based on the following rules:根据以下规则拦截响应
+    add:添加
+    edit:编辑
+    remove:移除
+    up：上移
+    down:下移
+    enabled:允许的
+    operator:操作
+    match type:匹配类型
+    relationship:关联
+    condition:条件
+    automatically update content-length header when the request is edited:当响应被编辑时，自动更新头部的内容长度字段
+-----------------
+intercept websockets messages:拦截网页接口消息
+    intercept client-to-server messages:拦截客户端到服务器的消息
+    intercept server-to-client messages:拦截服务器到客户端的消息
+-----------------
+responses modification:响应修改
+    这些设置用来执行响应自动修改
+    unhide hidden form fields:取消隐藏表单字段
+        prominently highlight unhidden fields:高亮显示未隐藏的字段
+    enable disabled form fields:启用被禁用的表单字段
+    remove input field length limits:移除输入字段长度限制
+    remove javascript form validation:移除表单验证的JS
+    remove all javascript:移除所有JS
+    remove &lt;object&gt; tags:移除网页标签
+    convert https links to http:将https转为http
+    remove secure flag from cookies:移除cookies的安全标志
+-----------------
+match and replace:匹配和替换
+    这些设置用于自动替换通过代理传递的请求和响应的部分
+    add:添加
+    edit:编辑
+    remove:移除
+    up：上移
+    down:下移
+    enabled:允许的
+    item:项目
+    match:匹配 
+    replace:替换
+    type:类型 
+    comment:描述
+-----------------
+ssl pass through:ssl通过
+    存疑：这些设置用于BURP将会直接放行通过SSL连接的特殊目标服务器(web)，在代理拦截视图和历史中将不会有关于通过这些连接的请求和响应的详细信息
+    add:添加
+    edit:编辑
+    remove:移除
+    paste url:粘贴网址
+    load:载入 
+    enable:允许 
+    host/IP range:主机/IP列表
+    port:端口
+    automatically add entires on client SSL negotiation failure:在客户端协商SSL失败时自动添加实体
+-----------------
+miscellaneous:混杂项
+    use http/1.0 in requests to server:在向服务器发送请求使用http/1.0协议
+    use http/1.0 in requests to client:在向客户端发送请求使用http/1.0协议
+    set response header &quot;Connection:close&quot;:在响应头部设置&quot;Connection:close&quot;
+    set &quot;Connection close&quot; on incoming requests:对传入的请求设置：&quot;Connection close&quot;
+    strip Proxy-* headers in incoming requests:删除传入请求头部的Proxy-*
+    remove unsupported encoding from Accept-Encoding headers in incoming requests:移除传入请求Accept-Encoding字段中不支持的编码
+    strip Sec-WebSocket-Extensions headers in incoming requests:删除传入请求头部的Sec-WebSocket-Extensions
+    unpack gzip/deflate in requests:在请求中解压
+    unpack gzip/deflate in responses:在响应中解压
+    disabled web interface at http://burp:禁止http://burp的web接口
+    suppress Burp error messages in browser:在浏览器中禁止Burp错误消息
+    don&apos;t send items to Proxy history or other Burp tools:不向代理历史和其他Burp工具发送项目
+    don&apos;t send items to Proxy history or other Burp tools,if out of scope:如果超出范围，不向代理历史和其他Burp工具发送项目
+</code></pre><hr>
+<h2 id="intruder模块：入侵模块"><a href="#intruder模块：入侵模块" class="headerlink" title="intruder模块：入侵模块"></a>intruder模块：入侵模块</h2><h3 id="target：目标"><a href="#target：目标" class="headerlink" title="target：目标"></a>target：目标</h3><pre><code>attack target:攻击目标
+start attack:开始攻击
+host:主机 
+port:端口
+use https:使用HTTPS
+</code></pre><h3 id="positions-位置"><a href="#positions-位置" class="headerlink" title="positions:位置"></a>positions:位置</h3><pre><code>payload positions:载荷位置
+start attack:开始攻击
+配置载荷位置将会插入到基本的请求中，攻击类型决定了有效载荷分配到有效载荷位置的方式，查看帮助获取详细信息
+attack type:攻击类型 
+sniper:狙击模式：单个变量进行破解，多个标记依次进行
+battering ram:冲车模式：多个变量同时进行
+pitchfork:叉式攻击：每一个变量标记对应一个字典，取每个字典的对应项
+cluster bomb:子母弹模式：每个变量对应一个字典，并且交叉破解，尝试各种组合(适用用户名+密码的破解)
+add$:添加变量位置
+clear$:清除变量位置
+auto$:自动标记变量位置
+refresh:刷新代码区域
+clear:清除所有变量标记
+</code></pre><h3 id="payloads-载荷"><a href="#payloads-载荷" class="headerlink" title="payloads:载荷"></a>payloads:载荷</h3><pre><code>payload sets:载荷设置
+    您可以定义一个或多个载荷集。载荷集合的数量取决于position选项卡中定义的攻击类型。每种载荷集都有各种载荷类型，并且可以用不同的方式定制每种载荷类型。
+    payload set:载荷设置
+    payload type:载荷类型(部分存疑)
+        simple list:简单列表
+        runtime file:运行文件
+        custom iterator:自定义的迭代器
+        character substitution:字符替换
+        case modification:大小写替换
+        recursive grep:递归查询
+        illegal unicode:非法字符
+        character blocks:字符块
+        numbers:数字
+        dates:日期
+        brute forcer:暴力破解
+        null payloads:空载荷
+        character frobber:字符XXX
+        bit flipper:位反转
+        username generator:用户名生成
+        ECB block shuffler:随机ECB块？？
+        extension-generated:扩展生成器
+        copy other payload:复制其他荷载
+-----------------
+payload options:载荷选项
+    simple list:
+        此有效负载类型允许您配置用作有效负载的简单字符串列表
+        paste：粘贴
+        load：zairu 
+        remove：移除
+        clear：清除
+        add:添加
+        add from list:从下列列表中添加
+    runtime file:运行文件
+        此有效负载类型允许您配置一个文件，以便在运行时从该文件读取有效负载字符串
+        select file:选择文件
+    custom iterator:自定义的迭代器
+        这种有效负载类型允许您配置多个项目列表，并使用列表中的所有项目排列生成有效负载。
+        position:位置
+        clear all:清除所有 
+        list items for position 1:列出位置1的项目
+        paste:粘贴 
+        load ：载入
+        remove:移除
+        clear:清除 
+        add :添加
+        add from list:从列表添加
+        separtator for position 1:位置1的分隔符
+        preset schemes:预设方案
+            choose a preset schemes:选择一个预设方案
+            directories/files extensions:字典/文件扩展
+            two-digit hex:两位十六进制
+            passwords + digit:密码+数字
+    character substitution:字符替换
+        此有效负载类型允许您配置字符串列表，并对每个项应用各种字符替换。
+        character substitutions:字符替换
+        case sensitive match:区分大小写的匹配
+        items:项目
+        paste:粘贴 
+        load ：载入
+        remove:移除
+        clear:清除 
+        add :添加
+        add from list:从列表添加
+    case modification:大小写替换
+        这种有效负载类型允许您配置字符串列表，并对每个项应用各种大小写修改。
+        case modification:大小写替换
+        no change:无改变
+        to lower case:转换为小写
+        to upper case:转换为大写
+        to propername:首字母转换为小写
+        to ProperName:首字母转换为大写
+        items:项目
+        paste:粘贴 
+        load ：载入
+        remove:移除
+        clear:清除 
+        add :添加
+        add from list:从列表添加
+    recursive grep:递归过滤？
+        此有效负载类型允许您从攻击中对前一个请求的响应中提取每个有效负载。
+        它在某些情况下非常有用，你需要递归地工作来提取有用的数据或交付一个漏洞。
+        提取grep项可以在options标签中定义。
+        select the &quot;extract grep&quot; item from which to derive payloads:选择“extract grep”项，从中派生有效荷载
+        initial payload for first request:第一个请求的初始有效载荷
+        stop if duplicate payload found:如果发现重复的负载,停止运行
+    illegal unicode:非法字符
+        此有效负载类型可用于生成字符的非法字符表示，它有时可以有效地绕过设计来阻止某些字符的过滤器。-有关每个选项的详细信息，请参阅完整帮助。
+        overlong UTF-8 encodings:超长UTF-8编码
+            maximum length:最大长度
+        illegal UTF-8 continuation bytes:非法的UTF-8连续字节
+            do illegal UTF-8:转换为非法UTF-8
+            maximize permutations in multi-byte encodings:最大化多字节编码的排列
+        illegal hex characters:非法十六进制字符
+            do illegal hex:转化为非法十六进制
+            maximize permutations in multi-byte encodings:最大化多字节编码的排列
+        hex formatting:十六进制格式
+            use lower case alpha characters:使用小写字母
+            add % prefix before each byte:在每个字节前添加%前缀
+        total encodings:总体编码
+            estimated encodings:预估编码
+            stop at maximum:在最大值为...时停止
+        match / replace in list items :匹配/替换在列表中的项
+            match character:匹配字符
+            replace with encodings of :用..编码替换
+        items:项目
+        paste:粘贴 
+        load ：载入
+        remove:移除
+        clear:清除 
+        add :添加
+        add from list:从列表添加
+    character blocks:字符块
+        此有效负载类型基于指定字符或字符串的块生成有效负载。它可以有效地检测缓冲区溢出并利用一些逻辑缺陷。
+        base string:基础字符
+        min length:最小长度
+        max length:最大长度
+        step:每一次递增长度
+    numbers:数字
+        此有效负载类型在给定范围内以指定格式生成数值有效负载。
+        number range:数值范围
+            type:类型
+            sequential:连续的
+            random:随机的
+            from：从..开始
+            to：到..结束
+            step：每一次递增值
+            how many：多少次
+        number format:数值格式
+            base:基础格式
+            decimal:十进制
+            hex:十六进制
+            min integer digits:最小整数值
+            max integer digits:最大整数值
+            min fraction digits:最小浮点数值
+            max fraction digits:最大浮点数值
+            examples:例子
+    dates:日期
+        此有效负载类型在给定范围内以指定格式生成日期有效负载
+        from：从..开始(从上到下依次为1到12月)
+        to：到..结束
+        step：每一次递增值
+        format:格式
+    brute forcer:暴力破解
+        此有效负载类型生成指定长度的有效负载，其中包含指定字符集的所有排列
+        character set:字符设置
+        min length:最小长度
+        max length:最大长度
+    null payloads:空载荷
+        此有效负载类型生成有效负载，其值为空字符串，如果没有指定有效载荷标记，则可以使用该标记重复发出未修改的基本请求。
+        generate:生成 
+        payloads:荷载
+        continue indefinitely:无限制的继续
+    character frobber:字符盗取？？
+        此有效负载类型对字符串输入进行操作，并依次修改每个字符位置的值。t对于快速测试长字符串的哪些部分对应用程序的处理有影响非常有用。
+        operate on:对..起作用
+        base value of payload position:有效载荷位置的基值
+        specific string:特殊字符
+    bit flipper:位反转
+        这种有效载荷类型对输入进行操作，并依次修改每个位位置的值，它有时可用于有意义地修改cbc加密数据的解密值，并可能干扰应用程序逻辑。
+        operate on:对..起作用
+        base value of payload position:有效载荷位置的基值
+        specific string:特殊字符
+        format of original data:原始数据格式
+        literal value:文字值
+        encoded as ASCII hex：ASCII十六进制编码
+        select bits to flip:选择要翻转的位
+    username generator:用户名生成
+        此有效负载类型允许您配置名称或电子邮件地址列表，并使用各种常见模式从这些列表派生潜在用户名。
+        您可以输入项目为“firstname lastname”或“firstname.lastname@example.org”。
+        maximum payloads per item:每个项目的最大有效荷载
+        items:项目
+        paste:粘贴 
+        load ：载入
+        remove:移除
+        clear:清除 
+        add :添加
+    ECB block shuffler:随机ECB块？？
+        这种有效负载类型可用于在ecb加密的数据中打乱密文块，从而有意义地修改解密的明文，并可能干扰应用程序逻辑。
+        您可以选择提供使用相同密码和密钥的加密字符串列表，以提供用于混洗加密数据的其他块。
+        encrypted data to shuffle:要加密的加密数据
+            base value of payload position:有效负载位置的基值
+            specific string:特殊字符串
+        format of original data:原始数据的格式
+            literal value:原始数据的文字值
+            encode as ASCII hex:用ASCII十六进制进行编码
+        block size(usually 8 or 16):块大小(通常是8或者16)
+        additional encrypted strings - optional:其他加密字符串-可选项
+            paste:粘贴 
+            load ：载入
+            remove:移除
+            clear:清除 
+            add :添加
+    extension-generated:扩展生成器
+        此有效内容类型调用Burp扩展以生成有效负载
+        selected generator:选择生成器
+    copy other payload:复制其他荷载
+        此有效负载类型将当前有效负载的值复制到另一个有效负载位置。它可以用于具有多个有效负载集的攻击类型
+        copy from position:从..位置复制
+-----------------
+payload processing:载荷处理
+    您可以定义规则在使用每个载荷之前对其进行处理，进行编码、加密等
+    add:添加
+        add prefix:添加前缀
+        add suffix:添加后缀
+        match/replace:匹配/替换
+        substring:子串提取
+        reverse substring:从末尾计数的子串提取
+        modify case:以相同模式修改载荷
+        encode:编码
+        decode:解码
+        hash:求hash值
+        add raw payload:添加原始载荷
+        skip if matches regex:跳过通过正则的匹配项
+        invoke burp extension:调用BURP的扩展插件
+    edit:编辑
+    remove:移除 
+    up:想上移动
+    down:下移
+-----------------
+payload encoding:载荷编码
+    你可以配置那些载荷中的字符需要进行URL编码，以保证器安全传输
+    URL-encode these characters:对这些字符进行URL编码
+</code></pre><h3 id="options：选项-1"><a href="#options：选项-1" class="headerlink" title="options：选项"></a>options：选项</h3><pre><code>request headers:请求头部
+    这些设置控制在攻击中是否更新Intruder中请求头的配置
+    update Content-Lenght header:更新头部内容长度字段
+    set Connection:close:设置Connection:close
+-----------------
+request engine:请求引擎
+    设置请求发送的线程、超时重试等
+    number of threads:线程数量
+    number of retries on network failure:网络失败的重试次数
+    pause before retry(milliseconds):重试前等待时间(毫秒)
+    throttle(milliseconds):延迟(两个请求之间的延迟)(毫秒)
+        fixed:固定值
+        variable:变化值
+            start:从...开始
+            step:递增值？变化值？
+    start time:开始时间
+        immediately:立即
+        in .. minutes:在..分钟内
+        paused:暂停
+-----------------
+attack results:攻击结果
+    这些设置控制捕获那些攻击结果
+    store requests:存储请求
+    store responses:存储响应
+    make unmodified baseline request:未修改的基本请求
+    use denial-of-service mode(no results):使用拒绝服务模式
+    store full payloads:保存完整的载荷
+-----------------
+grep-match:过滤匹配
+    在响应中找出存在指定内容的项
+    flag result items with responses matching these expressions:标记具有这些表达式的结果项
+    paste：粘贴
+    load:载入
+    remove:移除 
+    clear：清除
+    add：添加
+    match type:匹配类型
+        simple string:简单字符串
+        regex:正则表达式
+    case sensitive match:区分大小写的匹配
+    exclude http headers:排除http头
+-----------------
+grep-extract:过滤，提取(通过正则提取返回信息中的内容)
+    这些配置可以用来从攻击结果的响应字段中提取有用的信息
+    extract the following items from responses:从响应中提取下列项目
+    add:添加(会弹窗)
+        定义要提取的项的位置，在响应面板中选择该项将自动创建合适的配置，你也可以手动修改配置以确保其有效工作。
+        define start and end :定义开始和结束
+            start after expression:从...语句后开始
+            start at offset:从偏移量开始
+            end at delimiter:在定界符结束
+            end at fixed length:在固定的长度结束
+        extract from regex group:从正则表达式组提取
+            case sensitive:区分大小写
+        exclude http headers:排除http头
+        update config based on selection below:基于选择的内容更新配置
+        fetch response:提取响应
+        the request has not yet been issue - click &quot;fetch response&quot; to issue it :请求尚未被提取，点击XX提取它
+    edit:编辑
+    remove:移除
+    duplicate:复制
+    up：上移
+    down:下移
+    clear:清除 
+    maximum capture length:最大抓取长度
+-----------------
+gerp-payloads:过滤载荷
+    这些设置可用于标记包含提交负载反射的结果项。
+    search responses for payload strings:在响应中搜索载荷
+    case sensitive match:区分大小写匹配
+    exclude http headers:排除http头
+    match against per-url-enabled payloads:匹配预编译的载荷
+-----------------
+redirections：允许重定向
+    这些设置控制Burp在执行攻击时如何处理重定向。
+    follow redirections:跟随重定向
+        never：从不
+        on-site only:仅在同一网站
+        in-scope only:仅在范围内
+        always:始终
+    process cookies in redirections；在重定向中处理cookie
+</code></pre><hr>
+<h2 id="repeater模块-转发器模块"><a href="#repeater模块-转发器模块" class="headerlink" title="repeater模块:转发器模块"></a>repeater模块:转发器模块</h2><pre><code>go：运行，下一步，发送，继续等
+cancel:放弃
+request:请求 
+    raw：原始数据
+    hex：十六进制
+response:响应 
+    raw：原始数据
+</code></pre><hr>
+<h2 id="sequencer模块：定序器模块"><a href="#sequencer模块：定序器模块" class="headerlink" title="sequencer模块：定序器模块"></a>sequencer模块：定序器模块</h2><h3 id="live-capture-实时捕获"><a href="#live-capture-实时捕获" class="headerlink" title="live capture:实时捕获"></a>live capture:实时捕获</h3><pre><code>select live capture request:选择实时捕获的请求
+从其他工具发送请求到这里来配置活动捕获。选择要使用的请求，配置下面的其他选项，然后单击“Start live capture”。
+    remove:移除 
+    clear:清除 
+    star live capture:开始实时捕获
+token location within response:响应中的令牌位置
+在响应中选择令牌出现的位置。
+    cookie:cookie
+    form field:表单字段
+    custom location:自定义位置
+live capture options:实时捕获选项
+这些设置控制用于发出HTTP请求和在执行实时捕获时获取令牌的引擎
+    number of threads:线程数量
+    throttle between requests(milliseconds):两次请求间的延迟
+    ignore tokens whose length deviates by .. characters:忽略长度偏移..字节的令牌
+</code></pre><h3 id="manual-load-手动载入"><a href="#manual-load-手动载入" class="headerlink" title="manual load:手动载入"></a>manual load:手动载入</h3><pre><code>manual load:手动载入
+该方法允许您使用已经获得的令牌样本加载定序器，然后对该样本执行统计分析。
+    analyze now:现在分析
+    tokens load:令牌载入
+    shortest:最短的
+    longest:最长的
+    paste:粘贴 
+    load:载入
+    clear:清除 
+</code></pre><h3 id="analyze-options-分析选项"><a href="#analyze-options-分析选项" class="headerlink" title="analyze options:分析选项"></a>analyze options:分析选项</h3><pre><code>token handing:；令牌管理
+    这些设置控制在分析期间如何处理令牌。
+    pad short tokens at:在...填补短令牌
+    start：开始
+    end:结束
+    pad whith(single character or 2-digit ASCII hex code):用(单字符或者2位ASCII十六进制码)填补 
+    base64-decode before analyze:分析之前用base64解码
+token analysis:令牌分析(以下存疑)
+    下面的选项控制在字符级执行的分析类型。
+    count:计数(统计分析)
+    transitions:转换(连续统计分析)
+    下面的选项控制在位级执行的分析类型。
+    FIPS monobit:按FIPS标准单比特分析
+    FIPS poker:按FIPS标准4个连续分组分析
+    FIPS runs:按FIPS标准将相同值连续分组分析
+    FIPS long run :按FIPS标准将相同值连续分组统计最长段分析
+    Spectral:光谱分析
+    correlation:关联性分析
+    compression:压缩分析
+</code></pre><hr>
+<h2 id="decode模块：编码模块"><a href="#decode模块：编码模块" class="headerlink" title="decode模块：编码模块"></a>decode模块：编码模块</h2><pre><code>decode as:用...解码
+encode as:用...编码
+Hash:计算hash值
+</code></pre><hr>
+<h2 id="comparer模块：比较模块"><a href="#comparer模块：比较模块" class="headerlink" title="comparer模块：比较模块"></a>comparer模块：比较模块</h2><pre><code>这个功能允许您在不同的数据之间进行字或字节级的比较，您可以从其他工具加载、粘贴或发送数据到这里，然后选择要执行的比较
+paste：粘贴
+load:载入
+remove:移除 
+clear：清除
+compare:比较 
+words:字符 
+bytes:字节 
+</code></pre><hr>
+<h2 id="Extender模块：扩展模块"><a href="#Extender模块：扩展模块" class="headerlink" title="Extender模块：扩展模块"></a>Extender模块：扩展模块</h2><h3 id="extensions-扩展"><a href="#extensions-扩展" class="headerlink" title="extensions:扩展"></a>extensions:扩展</h3><pre><code>burp extensions:burp扩展
+    扩展允许您使用自己的或第三方代码定制Burp的行为
+    add：添加
+    remove:移除
+    up:上移
+    dowm:下移
+    -----------------
+    detail:详细信息
+        extension loaded:载入的扩展
+        name:名称
+        Item:项目
+        detail：详细信息
+    output:输出
+    errors:错误信息
+</code></pre><h3 id="BApp-store：BApp-编程调试软件-商店"><a href="#BApp-store：BApp-编程调试软件-商店" class="headerlink" title="BApp store：BApp(编程调试软件)商店"></a>BApp store：BApp(编程调试软件)商店</h3><pre><code>BApp Store包含由Burp Suite用户编写的Burp扩展，以扩展Burp的功能。
+    name:名称
+    installed:已安装
+    rating:评分等级
+    popularity:流行程度
+    last updated:最后更新时间
+    detail:详细信息
+refresh list:刷新列表
+manual install:手动安装
+</code></pre><h3 id="APIs-应用程序接口"><a href="#APIs-应用程序接口" class="headerlink" title="APIs:应用程序接口"></a>APIs:应用程序接口</h3><pre><code>burp extender APIs:burp应用程序接口扩展
+    您可以使用Burp Extender APls创建自己的扩展来定制Burp的行为。
+    save interface files:保存接口文件
+    save javadoc files:保存java文档文件
+</code></pre><h3 id="options-选项"><a href="#options-选项" class="headerlink" title="options:选项"></a>options:选项</h3><pre><code>settings:设置
+    这些设置控制Burp在启动时如何处理扩展。
+    automatically reload extensions on starup:启动是自动加载扩展
+    automatically update installed BApps on startup:启动时自动更新安装的BApp
+Java environment:Java环境
+    这些设置允许您为执行用java编写的扩展配置环境，如果您的扩展使用任何库，您可以指定库所在的文件夹，进行加载
+    folder for loading library JAR files(optional):加载JAR文件库库的文件夹(可选的)
+Python environment:Python环境
+    这些设置允许您为执行用Python编写的扩展配置环境。要使用Python扩展，您需要下载Jython，它是一个用Java实现的Python解释器。
+    location of Jython standalone JAR file:Jython文件位置
+    folder for loading modules(optional):加载模块文件夹(可选)
+Ruby environment:Ruby环境
+    通过这些设置，您可以确定执行用Ruby编写的扩展的环境。要使用Ruby扩展，您需要下载JRuby，它是一个用Java实现的Ruby解释器，注意，您可以在这里确定JRuby JAR文件的位置，也可以在启动时通过Java类路径加载JAR文件
+    location of JRuby JAR file:JRuby文件位置
+</code></pre><hr>
+<h2 id="project-options：工程选项"><a href="#project-options：工程选项" class="headerlink" title="project options：工程选项"></a>project options：工程选项</h2><h3 id="connections-连接"><a href="#connections-连接" class="headerlink" title="connections:连接"></a>connections:连接</h3><pre><code>platform authentication:平台认证
+    这些设置是在用户选项中指定的，但是可以在这里为这个特定的项目重写。
+    override user options:覆盖用户选项
+upstream proxy servers:上游代理服务器
+    这些设置是在用户选项中指定的，但是可以在这里为这个特定的项目重写。
+    override user options:覆盖用户选项
+socks proxy:socks代理
+....
+timeouts:超时
+    这些设置指定用于各种网络任务的超时时间。值以秒为单位。将选项设置为零或留空，则永远不超时。
+    normal:正常状态
+    open-ended responses:开放式的响应
+    domaon name resolution:域名解析
+    failed domain name resolution:域名解析失败
+hostname resolution:主机解析
+    在这里添加条目来覆盖您的计算机的DNS解析。
+out-of-scope requests:超出范围的请求
+    此功能可用于防止Burp发出任何超出范围的请求，包括通过代理发出的请求。
+    drop all out-of-scope requests:丢弃所有超出范围的请求
+    use suite scope [defined in target tab]:使用组件范围[在目标模块定义]
+    use custom scope:使用定制的范围
+</code></pre><h3 id="Http："><a href="#Http：" class="headerlink" title="Http："></a>Http：</h3><pre><code>redirections:重定向
+    这些设置控制了Burp在被要求跟随重定向的情况下，能够知道跟随哪些重定向类型。
+    跟随以下类型的重定向：
+    3xx status code with location header:头部位置状态代码为3xx
+    refresh header:刷新头部
+    meta refresh tag:元标识
+    JavaScript-driven:被动的js脚本
+    any status code with location header:头部位置任何状态码
+-----------------
+streaming responses:流媒体响应(分组响应)
+    这些设置用于指定url返回不确定流的响应。
+    代理将直接将这些响应传递给客户机。
+    转发器将在收到响应时更新响应面板，其他工具将忽略流响应。
+    为了查看Burp中流媒体响应的内容，您需要检查“存储流媒体响应”选项
+    use advanced scope control:使用高级范围控制 
+    add:添加
+    edit：编辑
+    remove:移除
+    paste url:粘贴url
+    load：载入
+    store streaming responses(may result in large temp files):存储流媒体响应(可能导致大的临时文件)
+    strip chunked encoding metadata in streaming responses:在流响应中对元数据进行分块编码
+-----------------
+status 100 responses:状态为100的响应
+    这些设置控制Burp处理状态为100的HTTP响应的方式
+    understand 100 continue responses:理解状态码100的持续响应
+    remove 100 continue headers:移除状态码100的头部
+</code></pre><h3 id="SSL："><a href="#SSL：" class="headerlink" title="SSL："></a>SSL：</h3><pre><code>SSL negotiation:SSL协商阶段
+    这些设置控制了Burp在与上游服务器执行SSL协商时将使用的SSL协议和密码。
+    如果您遇到SSL协商问题，你可以使用这些设置来请求使用特定的协议或密码。
+    请谨慎使用这些选项，因为错误配置可能会破坏您所有的SSL连接。
+    use the default protocols and ciphers of your java installation:使用Java安装的默认协议和密码
+    use custom protocols and ciphers:使用自定义的协议和密码
+    ------------------------------
+    SSL negotiation workarounds:SSL协商解决办法
+    automatically select compatible SSL parameters on negotiation failure:协商失败时自动选择兼容的SSL参数
+    allow unsafe renegotiation(required for some client certificates):允许不安全的重协商(某些客户端证书所需)
+    disabled SSL session resume:禁用SSL会话恢复
+client SSL certificates:客户端SSL证书
+    这些设置是在用户选项中配置的，但是可以在这里为这个特定的项目重写。
+    override user options:覆盖用户选项
+server SSL certificates:服务器端证书
+    此面板显示从web服务器接收到的惟一SSL证书的列表。双击一个项目以显示证书的完整细节。
+    host:主机
+    name:名称
+    issuer:发行商
+</code></pre><h3 id="Sessions-会话"><a href="#Sessions-会话" class="headerlink" title="Sessions:会话"></a>Sessions:会话</h3><pre><code>session handing rules:会话处理规则
+    您可以定义会话处理规则，使Burp在发出HTTP请求时执行特定的操作。
+    每个规则都有一个定义的范围(用于特定的工具、url或参数),
+    能够执行诸如添加会话cookie、登录到应用程序或检查会话有效性等操作。
+    在每个请求发出之前，Burp按顺序应用请求范围内的每个规则
+    add:添加
+    edit:编辑
+    remove:移除 
+    duplicate:复制
+    up:上移
+    down:下移
+    enable:允许 
+    description:描述
+    tools:工具 
+    要监视或排除会话处理规则的行为，可以使用sessions tracer详细查看处理每个规则的结果。
+    open sessions tracer:打开会话跟踪
+-----------------
+cookie jar:
+    Burp维护一个cookie jar，它存储访问过的网站发出的所有cookie.
+    会话处理规则可以使用和更新这些cookie来维护正在测试的应用程序的有效会话.
+    您可以使用下面的设置来控制burp如何根据来自特定工具的流量自动更新cookie jar。
+    监控以下工具的流量来更新cookie jar:
+    proxy:代理 
+    scanner：扫描
+    repeater:转发器 
+    spider:爬行、蜘蛛
+    intruder:入侵 
+    sequencer:定序器 
+    extender:扩展 
+    open cookie jar:打开cookie jar
+-----------------
+Macros：宏指令
+    宏是一个或多个请求的序列，您可以在会话处理规则中使用宏执行任务，例如登录到应用程序，获取反csrf令牌等
+    add:添加
+    edit:编辑
+    remove:移除 
+    duplicate:复制
+    up:上移
+    down:下移
+</code></pre><h3 id="Misc-混杂项"><a href="#Misc-混杂项" class="headerlink" title="Misc:混杂项"></a>Misc:混杂项</h3><pre><code>schedule tasks:计划任务
+    这些设置允许您指定burp将在指定的时间或间隔自动执行的任务。
+    add:添加
+    edit:编辑
+    remove:移除 
+    time:时间
+    repeat:重复次数
+    task:任务 
+-----------------
+burp collaborator server:burp合作服务器
+    Burp Collaborator是一个外部服务，Burp可以使用它来帮助发现多种漏洞。您可以使用PortSwigger提供的默认合作者服务器，或者部署自己的。
+    您应该阅读该特性的完整文档，并决定哪个选项最适合您。
+    use the default collaborator server:使用默认的合作服务器
+    Don&apos;t use burp collaborator:不使用burp合作模式
+    use a private collaborator server:使用私人的合作服务器
+    serv location:服务器地址
+    polling location(optional):轮流变换地址(可选择)
+    poll over unencrypted HTTP:在未加密的HTTP上轮流变换
+    run health check:运行健康检查
+-----------------
+logging:日志记录
+    这些设置控制HTTP请求和响应的日志记录
+    all tools：所有工具
+    proxy:代理 
+    intruder:入侵
+    repeater:转发器 
+    sequencer:定序器 
+    extender:扩展 
+    requests:请求 
+    responses:响应 
+</code></pre><hr>
+<h2 id="user-options-用户选项"><a href="#user-options-用户选项" class="headerlink" title="user options:用户选项"></a>user options:用户选项</h2><h3 id="connections-连接-1"><a href="#connections-连接-1" class="headerlink" title="connections:连接"></a>connections:连接</h3><pre><code>platform authentication:平台认证
+    这些设置允许您配置Burp来自动对目标web服务器执行平台身份验证。
+    注意:可以为项目选项中的单个项目重写这些设置
+    do platform authentication:配置平台认证
+    add:添加
+    edit:编辑
+    remove:移除 
+    destination host:目的主机
+    type：类型
+    username:用户名
+    domain：域名
+    domain hostname:域的主机名
+    prompt for credentials on platform authentication failure:在平台身份验证失败时提示凭据
+-----------------
+upstream proxy servers:上游代理服务器
+    以下规则确定Burp是将每个传出请求发送到代理服务器，还是直接发送到目标web服务器。
+    使用匹配每个目标主机的第一个规则，要将所有流量发送到单个代理服务器，请创建一个以*作为目标主机的规则。
+    注意:可以为项目选项中的单个项目重写这些设置
+    add:添加
+    edit:编辑
+    remove:移除 
+    up:上移
+    down:下移
+    enable:允许 
+    destination host:目标主机
+    proxy host:代理主机
+    proxy port：代理端口
+    auth type:授权类型
+    username:用户名 
+-----------------
+SOCKS proxy：SOCKS代理
+    这些设置允许您配置Burp来使用SOCKS代理。此设置应用于TCP级别，所有出站请求都将通过此代理发送
+    如果你也在上游HTTP代理服务器上配置了规则，对上游代理的请求将通过此处配置的SOCKS代理发送
+    注意:可以为项目选项中的单个项目重写这些设置。
+    use SOCKS proxy :使用SOCKS代理
+    SOCKS proxy host:SOCKS代理主机
+    SOCKS proxy port:SOCKS代理端口
+    username:用户名 
+    password:密码 
+    do DNS lookup over SOCKS proxy :在SOCKS代理上进行DNS查找
+</code></pre><h3 id="SSL：-1"><a href="#SSL：-1" class="headerlink" title="SSL："></a>SSL：</h3><pre><code>JAVA SSL Options：JAVA SSL选项
+    这些设置可用于启用成功连接到某些服务器可能需要的某些SSL特性。
+    enable algorithms blocked by Java security policy(requires restart):启用被Java安全策略阻塞的算法(需要重新启动)
+    disable Java SNI extension(requires restart):禁用Java SNI扩展(需要重新启动)
+-----------------
+Client SSL Certificates:客户端SSL证书
+    这些设置允许您确定当目标主机请求客户端SSL证书时，Burp将使用的客户端SSL证书
+    Burp将使用列表中的第一个证书，该证书的主机配置与所联系主机的名称匹配
+    您可以双击一个项目来查看证书的完整细节。
+    注意:可以为项目选项中的单个项目重写这些设置。
+    add:添加
+    remove:移除 
+    up:上移
+    down:下移
+    enable:允许 
+    host:主机 
+    type:类型 
+    alias:别名
+    subject:主题、科目
+    issuer:发行商
+    key:密钥
+</code></pre><h3 id="Display：展示"><a href="#Display：展示" class="headerlink" title="Display：展示"></a>Display：展示</h3><pre><code>user interface:用户接口
+    这些设置允许您控制Burp的用户界面外观。
+    font size:字体大小
+    look and feel:外观和感受
+HTTP Messages Display：HTTP消息展示
+    这些设置允许您控制如何在原始HTTP查看器/编辑器中显示HTTP消息。
+    font:字体 
+    highlight request parameters:高亮显示请求参数
+    highlight responses syntax:高亮显示相应语法
+    analyze and display AMF messages(use with caution):分析和显示AMF消息(谨慎使用)
+character sets:字符设置
+    这些设置现在控制Burp在显示原始HTTP消息时处理不同的字符集。注意，有些字形不支持所有的字体。
+    如果您需要使用扩展的或不常见的字符集，您应该首先尝试系统字体，如Courier New或Dialog
+    recognize automatically based on message headers:基于消息头自动识别
+    use the platform default(GBK):使用平台默认编码
+    display as raw bytes:显示为原始字节
+    use a specific character set:使用特定的字符集
+HTML rendering:HTML透视图？渲染？
+    这些设置控制Burp如何处理HTML内容的工具内呈现
+    allow renderer to make HTTP requests(for image,etc.):允许渲染器发出HTTP请求(用于图像等)
+</code></pre><h3 id="Misc：混杂项"><a href="#Misc：混杂项" class="headerlink" title="Misc：混杂项"></a>Misc：混杂项</h3><pre><code>Hotkeys:快捷键/热键
+    这些设置允许您为常见的操作确定热键。这些包括特定于项目的操作，如“发送到中继器”，-全局操作，如“切换到代理”，以及编辑器内的操作，如“剪切”和“撤消”
+    action:动作 
+    hotkeys:快捷键/热键
+    edit hotkeys:编辑快捷键
+automatic project backup[disk project only]:自动备份项目[仅磁盘项目]
+    自动项目备份定期在后台保存Burp项目文件的副本。
+    automatically back up the project every .. minutes:每..分钟自动备份项目
+    include in-scope items only :只包含范围内的项
+    show progress dialog during backups:在备份期间显示进度对话框
+    delete backup file on clean shutdown of burp:在清除并关闭burp时删除备份文件在
+temporary files location:临时文件位置
+    这些设置允许您配置Burp存储临时文件的位置。改变将在下次启用Burp时开始生效
+    use default system temp directory:使用默认的系统临时文件夹
+    use custom location:使用自定义的位置
+-----------------
+REST API :应用编程接口
+    其他工具可以使用REST API与Burp套件集成!该函数公开敏感的功能和数据，在启用该服务之前，您应该阅读完整的文档。
+    一旦配置好，您就可以浏览API文档并与APl在[service URL]/[API key]进行交互
+    service URL:服务网址
+    service running:运行服务
+    allow access without API key(using this option is not secure):允许在没有API密钥的情况下访问(使用此选项不安全)
+    -----------------
+    API keys：API密钥
+        new：新的
+            API密钥是秘密，应该小心处理。创建现有API密钥之后，无法从Burp检索它
+            copy key to cliboard:复制密钥到剪贴板
+        edit：编辑
+        delete：删除
+        enable：允许
+        name：名称
+        created:创建者
+-----------------
+Proxy Interception:代理拦截
+    此设置控制在启动时代理截取的状态。
+    enable interception at startup:在启动时允许拦截
+        always enable:总是允许
+        always disable:总是不允许
+        restore setting from when Burp was last closed:恢复Burp上次关闭时的设置
+Proxy History logging:代理历史日志记录
+    该设置控制向目标范围添加项目是否会自动设置代理选项，以停止向历史记录或其他Burp工具发送超出范围的项目
+    when items are added to target scope:当项目被添加到范围内时
+        stop sending out-of-scope items to proxy history and other Burp tools:停止向历史记录或其他Burp工具发送超出范围的项目
+        prompt for action:迅速采取行动
+        do nothing :不做任何操作
+Performance Feedback:使用反馈
+    你可以通过提交关于Burp表现的匿名反馈来帮助改善Burp。
+    submit anonymous feedback about burp&apos;s performance:提交关于Burp表现的匿名反馈
+    反馈只包含有关打嗝的内部功能的技术信息，并不以任何方式识别你。
+    如果您通过邮件报告错误，通过包含调试ID，您可以帮助我们诊断Burp实例遇到的任何问题
+</code></pre><p>————————————————完结—————————————————–</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BurpSuite/" rel="tag"># BurpSuite</a>
+          
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
+          
+            <a href="/tags/BurpSuite介绍/" rel="tag"># BurpSuite介绍</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/05/在Linux下安装软件/" rel="next" title="Linux安装软件">
+                <i class="fa fa-chevron-left"></i> Linux安装软件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Two-Ha</p>
+              <p class="site-description motion-element" itemprop="description">一个安全圈的小菜鸟，不是真正意义上的blog，只是自己的一个备忘录。如有错误请指正，我会及时修改。谢谢您的支持。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#菜单栏："><span class="nav-number">1.</span> <span class="nav-text">菜单栏：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Burp栏："><span class="nav-number">1.1.</span> <span class="nav-text">Burp栏：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Project栏："><span class="nav-number">1.2.</span> <span class="nav-text">Project栏：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intruder栏"><span class="nav-number">1.3.</span> <span class="nav-text">intruder栏:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repeater栏："><span class="nav-number">1.4.</span> <span class="nav-text">Repeater栏：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window栏："><span class="nav-number">1.5.</span> <span class="nav-text">window栏：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#help栏："><span class="nav-number">1.6.</span> <span class="nav-text">help栏：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块栏："><span class="nav-number">2.</span> <span class="nav-text">模块栏：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dashboard模块：仪表模块"><span class="nav-number">2.1.</span> <span class="nav-text">dashboard模块：仪表模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-scan：新的扫描"><span class="nav-number">2.1.1.</span> <span class="nav-text">new scan：新的扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#new-live-task-新的现场任务"><span class="nav-number">2.1.2.</span> <span class="nav-text">new live task:新的现场任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tasks界面其他释译："><span class="nav-number">2.1.3.</span> <span class="nav-text">tasks界面其他释译：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#event-log-日志界面释译"><span class="nav-number">2.1.4.</span> <span class="nav-text">event log:日志界面释译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#issue-activity-问题活动界面释译"><span class="nav-number">2.1.5.</span> <span class="nav-text">issue activity:问题活动界面释译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#target模块："><span class="nav-number">2.2.</span> <span class="nav-text">target模块：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#site-map-网站地图"><span class="nav-number">2.2.1.</span> <span class="nav-text">site map:网站地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope-范围"><span class="nav-number">2.2.2.</span> <span class="nav-text">scope:范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#issue-definitions-定义的问题"><span class="nav-number">2.2.3.</span> <span class="nav-text">issue definitions:定义的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy模块：代理模块"><span class="nav-number">2.3.</span> <span class="nav-text">proxy模块：代理模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#intercept-拦截"><span class="nav-number">2.3.1.</span> <span class="nav-text">intercept:拦截</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http-history-历史http"><span class="nav-number">2.3.2.</span> <span class="nav-text">http history:历史http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#websockets-history-网页接口历史"><span class="nav-number">2.3.3.</span> <span class="nav-text">websockets history:网页接口历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#options：选项"><span class="nav-number">2.3.4.</span> <span class="nav-text">options：选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#intercept-client-requests-拦截客户端请求"><span class="nav-number">2.3.5.</span> <span class="nav-text">intercept client requests:拦截客户端请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#intruder模块：入侵模块"><span class="nav-number">2.4.</span> <span class="nav-text">intruder模块：入侵模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#target：目标"><span class="nav-number">2.4.1.</span> <span class="nav-text">target：目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#positions-位置"><span class="nav-number">2.4.2.</span> <span class="nav-text">positions:位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#payloads-载荷"><span class="nav-number">2.4.3.</span> <span class="nav-text">payloads:载荷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#options：选项-1"><span class="nav-number">2.4.4.</span> <span class="nav-text">options：选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repeater模块-转发器模块"><span class="nav-number">2.5.</span> <span class="nav-text">repeater模块:转发器模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sequencer模块：定序器模块"><span class="nav-number">2.6.</span> <span class="nav-text">sequencer模块：定序器模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#live-capture-实时捕获"><span class="nav-number">2.6.1.</span> <span class="nav-text">live capture:实时捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#manual-load-手动载入"><span class="nav-number">2.6.2.</span> <span class="nav-text">manual load:手动载入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#analyze-options-分析选项"><span class="nav-number">2.6.3.</span> <span class="nav-text">analyze options:分析选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#decode模块：编码模块"><span class="nav-number">2.7.</span> <span class="nav-text">decode模块：编码模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#comparer模块：比较模块"><span class="nav-number">2.8.</span> <span class="nav-text">comparer模块：比较模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extender模块：扩展模块"><span class="nav-number">2.9.</span> <span class="nav-text">Extender模块：扩展模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#extensions-扩展"><span class="nav-number">2.9.1.</span> <span class="nav-text">extensions:扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BApp-store：BApp-编程调试软件-商店"><span class="nav-number">2.9.2.</span> <span class="nav-text">BApp store：BApp(编程调试软件)商店</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#APIs-应用程序接口"><span class="nav-number">2.9.3.</span> <span class="nav-text">APIs:应用程序接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#options-选项"><span class="nav-number">2.9.4.</span> <span class="nav-text">options:选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#project-options：工程选项"><span class="nav-number">2.10.</span> <span class="nav-text">project options：工程选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#connections-连接"><span class="nav-number">2.10.1.</span> <span class="nav-text">connections:连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Http："><span class="nav-number">2.10.2.</span> <span class="nav-text">Http：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL："><span class="nav-number">2.10.3.</span> <span class="nav-text">SSL：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sessions-会话"><span class="nav-number">2.10.4.</span> <span class="nav-text">Sessions:会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc-混杂项"><span class="nav-number">2.10.5.</span> <span class="nav-text">Misc:混杂项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#user-options-用户选项"><span class="nav-number">2.11.</span> <span class="nav-text">user options:用户选项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#connections-连接-1"><span class="nav-number">2.11.1.</span> <span class="nav-text">connections:连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL：-1"><span class="nav-number">2.11.2.</span> <span class="nav-text">SSL：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Display：展示"><span class="nav-number">2.11.3.</span> <span class="nav-text">Display：展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc：混杂项"><span class="nav-number">2.11.4.</span> <span class="nav-text">Misc：混杂项</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Two-Ha</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
