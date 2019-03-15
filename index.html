@@ -295,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/burp中英文对照单/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/云的帧中继配置、OSPF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -314,7 +314,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/11/burp中英文对照单/" itemprop="url">BurpSuite界面中英文对照TxT版</a></h1>
+                <a class="post-title-link" href="/2019/03/15/云的帧中继配置、OSPF/" itemprop="url">云帧中继、OSPF</a></h1>
         
 
         <div class="post-meta">
@@ -326,8 +326,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T08:43:10+08:00">
-                2019-03-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T11:04:03+08:00">
+                2019-03-15
               </time>
             
 
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/渗透测试工具/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透测试工具</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -388,17 +388,15 @@
       
         
           
-          @@@@@第一行@@@@
-*说明：
-1.网上大多数译文都是在图片上进行的，使用不大方便。也是为了加深自己对burp的了解。
-
-2.此译文为机译加自己简单校对，个人英语很渣，故有错误请复制下来自行修改，如告知我感激不尽
-
-3.此译文来源：Two-Ha，个人网络备忘录：https://two-ha.gi
+          配置云中继基本命令：
+-int [端口号]   进入端口配置模式
+-en frame-relay     封装成云中继模式
+-fr lmi-type [cisco|ANSI|Q933a]     配置帧中继封装类型    
+-fr interface-dlci [101、102...]    配置帧
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/11/burp中英文对照单/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/云的帧中继配置、OSPF/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -449,7 +447,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/在Linux下安装软件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/思科ACL详细命令（三层交换机、路由器）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -468,7 +466,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/在Linux下安装软件/" itemprop="url">Linux安装软件</a></h1>
+                <a class="post-title-link" href="/2019/03/15/思科ACL详细命令（三层交换机、路由器）/" itemprop="url">思科ACL命令详细</a></h1>
         
 
         <div class="post-meta">
@@ -480,8 +478,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:43:51+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:55:06+08:00">
+                2019-03-15
               </time>
             
 
@@ -503,8 +501,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -542,15 +540,16 @@
       
         
           
-          Linux下的安装包封装后的软件包：后缀.rpm(红帽公司的安装包)；后缀.deb debian操作系统的软件包
-    优点：安装方便
-    缺点：不可以指定安装路径，不可以定制安装功能，更新速度慢
-未封装的源码包：GNU社区
-    优点：可以修改源代码，可以指定安装位置，可以定制安装功能模块
+          ACLACL：数据包过滤技术，对网络访问进行控制，保证网络的安全
+ACL规则(rule)包含的信息：源MAC，目的MAC，源IP，目的IP，IP协议号，tcp端口等
+ACL分类：
+根据过滤信息：
+    ip access-list(应用于三层以上);
+    mac access-list(应用于
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/在Linux下安装软件/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/思科ACL详细命令（三层交换机、路由器）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -601,7 +600,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/远程交互式shell/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/生成树协议STP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -620,7 +619,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/远程交互式shell/" itemprop="url">远程交互式shell</a></h1>
+                <a class="post-title-link" href="/2019/03/15/生成树协议STP/" itemprop="url">生成树协议基础</a></h1>
         
 
         <div class="post-meta">
@@ -632,8 +631,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:39:51+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:53:28+08:00">
+                2019-03-15
               </time>
             
 
@@ -655,8 +654,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -694,17 +693,17 @@
       
         
           
-          安装软件yum install expect
-脚本语言
-&quot;注意：空格的问题&quot;
-    #!/usr/bin/expect
-    set timeout 30(-1：永不过期)
-    spawn ssh 用户名@IP &quot;执行的操作&quot;
-    expect &
+          概念作用：
+    逻辑上断开环路，防止形成广播风爆
+    当线路故障时，阻塞的接口被激活，恢复通信
+术语：
+    根网桥，交换机上号比较小的为根网桥
+    指定接口：根网桥上的所有接口为指定接口，每个物理网段中都有一个端口号比较小的为指定接口，用于通信
+    根接口：与根网桥通信时开销最小
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/远程交互式shell/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/生成树协议STP/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -755,7 +754,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/用户及ACL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/路由重分发/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -774,7 +773,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/用户及ACL/" itemprop="url">用户及ACL</a></h1>
+                <a class="post-title-link" href="/2019/03/15/路由重分发/" itemprop="url">路由重分发配置</a></h1>
         
 
         <div class="post-meta">
@@ -786,8 +785,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:33:54+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:50:48+08:00">
+                2019-03-15
               </time>
             
 
@@ -809,8 +808,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -848,13 +847,15 @@
       
         
           
-          用户分类超级用户：root（唯一标示：uid=0）普通用户：可以登录系统，权限没有root用户高；可以创建自己的文件，辅助管理系统（uid=500~6000）程序用户：（uid=1~499），不可以登录系统
-用户文件详解/etc/passwd：记录系统中所有用户信息
-    root:x:0:0:r
+          配置路由重分发命令进入某个路由协议内：
+-redistribut [ospf/rip/bgp/static/connected] metric [metric_value] metric-type [metric-type_value] subnets
+解释：
+    connected：直连路由
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/用户及ACL/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/路由重分发/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -905,7 +906,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/文件系统、磁盘/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/路由器配置前置内容/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -924,7 +925,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/文件系统、磁盘/" itemprop="url">文件系统、硬盘系统</a></h1>
+                <a class="post-title-link" href="/2019/03/15/路由器配置前置内容/" itemprop="url">路由前置基础知识</a></h1>
         
 
         <div class="post-meta">
@@ -936,8 +937,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:29:10+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:48:02+08:00">
+                2019-03-15
               </time>
             
 
@@ -959,8 +960,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -998,17 +999,17 @@
       
         
           
-          LINUX文件系统主分区：sda1
-扩展分区：sda2-4
-    逻辑分区：sda5--
-ext4:文件系统，扩展文件系统；支持单个文件容量大，设定日志记录
-swap：交换文件系统，交换分区；不用来存储文件，虚拟内存，内存的1-1.5倍之间
-命令：# df -Th   查看系统分区的使用情况
-fd
+          网络层的作用定义了基于IP协议的逻辑地址
+连接不同的媒介类型
+选择数据通过网络的最佳路径
+IP数据包格式版本号：4位，指IP协议的版本
+首部长度：4位，指首部长度，最大为60字节（单位：4字节，即为0001的时候表示首部长为4字节）
+优先级与服务类型：8位，提供三层的QoS
+总长度：16位，指首部和
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/文件系统、磁盘/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/路由器配置前置内容/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1059,7 +1060,7 @@ fd
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/文件共享/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/路由器交换机汇总/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -1078,7 +1079,7 @@ fd
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/文件共享/" itemprop="url">文件共享</a></h1>
+                <a class="post-title-link" href="/2019/03/15/路由器交换机汇总/" itemprop="url">路由器交换机配置基本步骤</a></h1>
         
 
         <div class="post-meta">
@@ -1090,8 +1091,8 @@ fd
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:25:21+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:46:21+08:00">
+                2019-03-15
               </time>
             
 
@@ -1113,8 +1114,8 @@ fd
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -1152,18 +1153,481 @@ fd
       
         
           
-          samba协议端口：139和445
-负责win主机和linux主机之间实现文件系统共享
-微软：
-    smb协议：服务消息协议
-    cifs协议：通用互联网文件系统协议
+          配置vlan1.划分vlan
+2.进入vlan配置界面，添加IP
+配置远程1.改变名称
+2.设置特权模式密码
+3.进入远程端口
+4.远程连接密码
+5.开启端口
+配置VTP1.进入vlan database；#vlan database
+2.设置vtp空间名；vtp domain [自定义名字]
+3.
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/路由器交换机汇总/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/路由器的基本配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Two-Ha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二哈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/路由器的基本配置/" itemprop="url">路由器配置基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:44:57+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          基本配置和交换机一样
+在特权用户模式下:
+-disa    可以退回普通用户模式
+-show history   显示历史命令
+-terminal history size [数字]   可以把历史记录大小调整为【数字】大小
+这个命令也可以去控制台模式下改大小
+-interface s0/0/0  
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/路由器的基本配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/交换机配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Two-Ha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二哈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/交换机配置/" itemprop="url">交换机配置基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:43:31+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          交换机配置cisio设备的常见端口类型S:serial接口,告诉异步串口,路由器连接路由器的时候使用的端口(只在路由器上有)
+F:快速以太网端口,交换机和电脑连接的端口,最高100M,可限速
+E:以太网端口,默认10M
+G:千兆以太网端口,用来连接以太网
+基本命令123456789switch&gt
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/15/交换机配置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/防火墙/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Two-Ha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二哈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/防火墙/" itemprop="url">防火墙基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:41:47+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          防火墙定义：具有安全防护功能的网络设备
 作用：
-    将自己模拟成一个win主机，共享自己的文件系统，给另外一台win主机
-开启匿名登录    # yum ins
+    隔离网络：将需要保护的网络和不安全的互联网进行隔离，隐藏信息并进行安全防护
+    控制流量：对进出防火墙的数据流量进行限制
+    记录分析：对进出数据进行检查，记录相关信息
+基本功能：
+    访问控制：策略-增强型ACL
+    攻击防护
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/文件共享/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/防火墙/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1214,7 +1678,7 @@ fd
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/网络IP地址配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/动态路由协议-RIP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Two-Ha">
@@ -1233,7 +1697,7 @@ fd
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/05/网络IP地址配置/" itemprop="url">网络IP地址配置</a></h1>
+                <a class="post-title-link" href="/2019/03/15/动态路由协议-RIP/" itemprop="url">动态路由协议简介及RIP</a></h1>
         
 
         <div class="post-meta">
@@ -1245,8 +1709,8 @@ fd
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:22:24+08:00">
-                2019-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:40:21+08:00">
+                2019-03-15
               </time>
             
 
@@ -1268,8 +1732,8 @@ fd
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
                   </a>
                 </span>
 
@@ -1307,479 +1771,18 @@ fd
       
         
           
-          配置IP、子网掩码、网关、dns基本命令关闭NetworkManager服务
-手动配IP地址
-    ifconfig    查看、配置网络地址
-    eth0    Ethernet：以太网卡，0：第一块...
-        -a：查看所有网络接口的信息
-    ifconfig eth0  
+          动态路由实现：基于某种路由协议的实现
+特点：减少路由管理任务；占用网络宽带
+动态路由协议：路由器之间用来交换信息的语言
+度量值：跳数、带宽、负载、时延、可靠性、成本
+收敛：是所有路由器的路由表都达到一致状态的过程
+网络中：静态路由和动态路由相互补充
+动态路由协议的分类按照执行的算法分类：
+距离矢量路
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/网络IP地址配置/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/日志服务器的搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Two-Ha">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="二哈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/日志服务器的搭建/" itemprop="url">日志服务器搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:18:39+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          基本配置修改网卡名称eth0/etc/udev/rules.d/70-persistent-net.rules
-开启内核路由功能/etc/sysctl.conf
-net.ipv4.ip_forward=1
-# sysctl -p 开启路由功能
-远程登录# ssh root@IP地址
-/var/log
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/日志服务器的搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/开机及服务、进程管理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Two-Ha">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="二哈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/开机及服务、进程管理/" itemprop="url">开机服务和进程管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:11:57+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          LINUX开机开机加电-BIOS（开机自检）-MBR引导-GRUB菜单-加载内核（kernel）-init进程初始化
-init进程：
-    由linux内核加载运行/sbin/init程序
-    是系统中第一个进程
-    PID永远为1
-init进程的配置文件/etc/inittab    配
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/开机及服务、进程管理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/计划任务/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Two-Ha">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="二哈">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/计划任务/" itemprop="url">计划任务管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T09:07:10+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          计划任务的分类1.一次性计划任务
-2.周期性计划任务
-一次性计划任务确认一次性计划任务的服务状态
-/etc/init.d/atd status
-命令：
-    服务脚本：/etc/init.d/atd
-设置任务：
-    at [HH:MM] [YYYY-mm-dd] 任务
-结束编辑任务
-    c
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/05/计划任务/#more" rel="contents">
+            <a class="btn" href="/2019/03/15/动态路由协议-RIP/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1821,7 +1824,7 @@ init进程的配置文件/etc/inittab    配
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1867,7 +1870,7 @@ init进程的配置文件/etc/inittab    配
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1889,7 +1892,7 @@ init进程的配置文件/etc/inittab    配
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

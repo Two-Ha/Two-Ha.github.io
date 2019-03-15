@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="网络基础,思科ACL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ACLACL：数据包过滤技术，对网络访问进行控制，保证网络的安全 ACL规则(rule)包含的信息：源MAC，目的MAC，源IP，目的IP，IP协议号，tcp端口等 ACL分类： 根据过滤信息：     ip access-list(应用于三层以上);     mac access-list(应用于二层);     mac-ip access-list(应用于二层以上) 根据信息的复杂程度：">
+<meta name="keywords" content="网络基础,思科ACL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="思科ACL命令详细">
+<meta property="og:url" content="http://yoursite.com/2019/03/15/思科ACL详细命令（三层交换机、路由器）/index.html">
+<meta property="og:site_name" content="二哈">
+<meta property="og:description" content="ACLACL：数据包过滤技术，对网络访问进行控制，保证网络的安全 ACL规则(rule)包含的信息：源MAC，目的MAC，源IP，目的IP，IP协议号，tcp端口等 ACL分类： 根据过滤信息：     ip access-list(应用于三层以上);     mac access-list(应用于二层);     mac-ip access-list(应用于二层以上) 根据信息的复杂程度：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-15T03:03:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="思科ACL命令详细">
+<meta name="twitter:description" content="ACLACL：数据包过滤技术，对网络访问进行控制，保证网络的安全 ACL规则(rule)包含的信息：源MAC，目的MAC，源IP，目的IP，IP协议号，tcp端口等 ACL分类： 根据过滤信息：     ip access-list(应用于三层以上);     mac access-list(应用于二层);     mac-ip access-list(应用于二层以上) 根据信息的复杂程度：">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/15/思科ACL详细命令（三层交换机、路由器）/">
+
+
+
+
+
+  <title>思科ACL命令详细 | 二哈</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">二哈</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/思科ACL详细命令（三层交换机、路由器）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Two-Ha">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="二哈">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">思科ACL命令详细</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T10:55:06+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络基础知识/" itemprop="url" rel="index">
+                    <span itemprop="name">网络基础知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ACL"><a href="#ACL" class="headerlink" title="ACL"></a>ACL</h2><pre><code>ACL：数据包过滤技术，对网络访问进行控制，保证网络的安全
+ACL规则(rule)包含的信息：源MAC，目的MAC，源IP，目的IP，IP协议号，tcp端口等
+ACL分类：
+根据过滤信息：
+    ip access-list(应用于三层以上);
+    mac access-list(应用于二层);
+    mac-ip access-list(应用于二层以上)
+根据信息的复杂程度：
+    standard：标准
+    extended：扩展，更加详细、细致的过滤信息
+根据命名方式：
+    numbered：数字（标准：1-99、1300-1999；扩展：100-199、2000-2699）
+    named：命名
+</code></pre><h2 id="在三层交换机上配置ACL的详细命令"><a href="#在三层交换机上配置ACL的详细命令" class="headerlink" title="在三层交换机上配置ACL的详细命令"></a>在三层交换机上配置ACL的详细命令</h2><h3 id="IP-ACL"><a href="#IP-ACL" class="headerlink" title="IP ACL"></a>IP ACL</h3><h4 id="配置命名标准的IP访问控制列表"><a href="#配置命名标准的IP访问控制列表" class="headerlink" title="配置命名标准的IP访问控制列表"></a>配置命名标准的IP访问控制列表</h4><pre><code>1.创建一个命名标准IP访问列表
+2.指定多条permit或者deny规则
+3.开启包过滤，设置默认动作
+4.在端口使用访问列表
+具体命令：
+-ip access-list standard [name:jw]  创建一个命名标准IP访问列表
+-deny|permit {&lt;源IP网段&gt; &lt;源IP网段反掩码&gt;}|any-source|{host-source &lt;IP地址&gt;}   指定规则
+    例子：允许原地址为192.168.10.0/24的数据包通过：
+        permit 192.168.10.0 0.0.0.255
+        拒绝原地址为192.168.20.1的数据包通过：
+        deny host-source 192.168.20.1
+-firewall enable    开启包过滤
+-firewall disable   关闭包过滤
+-firewall default permit    设置默认动作为允许
+-firewall default permit    设置默认动作为拒绝
+-interface &lt;端口号&gt; 进入端口配置模式
+-ip access-group &lt;name&gt; in|out  让过滤规则使用在端口的进或者出的方向
+</code></pre><h4 id="配置命名扩展IP访问列表"><a href="#配置命名扩展IP访问列表" class="headerlink" title="配置命名扩展IP访问列表"></a>配置命名扩展IP访问列表</h4><pre><code>具体命令：
+    -ip acc-list extended &lt;name:jw&gt;     创建一个命名扩展IP访问列表
+    -deny|permit icmp {&lt;源IP网段&gt; &lt;源IP网段反掩码&gt;}|any-source|{host-source &lt;源IP地址&gt; &lt;目的IP地址&gt; &lt;目的IP地址反掩码&gt;} |any-destination | host-destination &lt;目的IP地址&gt; [{&lt;icmp-type:icmp类型&gt;　&lt;icmp-code:icmp的协议编号&gt;}] [precedence &lt;prec:IP优先级0-7] [tos &lt;tos：0-15&gt;] [time-range &lt;时间组名称&gt;]   定义ICMP规则
+    -deny|permit igmp {&lt;源IP网段&gt; &lt;源IP网段反掩码&gt;}|any-source|{host-source &lt;源IP地址&gt; &lt;目的IP地址&gt; &lt;目的IP地址反掩码&gt;} |any-destination | host-destination &lt;目的IP地址&gt; [{&lt;igmp-type:igmp类型&gt;　&lt;igmp-code:icmp的协议编号&gt;}] [precedence &lt;prec:IP优先级0-7&gt;] [tos &lt;tos：0-15&gt;] [time-range &lt;时间组名称&gt;]   定义IGMP规则
+    -deny|permit tcp &lt;源IP网段&gt; &lt;源IP网段反掩码&gt; | any-source |host-source &lt;源IP地址&gt; [sPort &lt;sPort：源端口号&gt;] &lt;目的IP地址&gt; &lt;目的IP地址反掩码&gt;| any-destination |host-destination &lt;目的IP地址&gt; [dPort &lt;dPort：目的端口号&gt;] [ack+fin+psh+rst+urg+syn] [precedence &lt;prec&gt;] [tos &lt;tos&gt;] [time -range &lt;时间组名称&gt;]   定义TCP规则
+    -deny|permit eigrp|gre|igrp|ipinip|ip|&lt;int&gt; &lt;源IP地址段&gt; &lt;源IP地址段反掩码&gt; | any-source | host-source &lt;源IP地址&gt; &lt;目的IP地址&gt; &lt;目的IP地址反掩码&gt; | any-destination |host-destination &lt;目的IP地址&gt; [precedence &lt;prec&gt;] [tos &lt;tos&gt;] [time –range &lt;时间组名称&gt;]  过滤IP等规则
+例子：
+    拒绝igmp报文通过：deny igmp any-source any-destination
+    允许目的地址为192.168.0.1、目的端口为32的udp包通过：permit udp any-source host-destination 192.168.0.1 dport 32
+</code></pre><h4 id="配置数字标准IP访问控制列表"><a href="#配置数字标准IP访问控制列表" class="headerlink" title="配置数字标准IP访问控制列表"></a>配置数字标准IP访问控制列表</h4><pre><code>1.创建一个数字标准访问列表,并定义规则
+2.开启交换机包过滤，并设置默认动作
+4.将规则运用到端口
+具体命令：
+-access-list &lt;num：数字编号&gt; deny|permit {&lt;源IP网段&gt; &lt;源IP网段的反掩码&gt;}|any-source|{host-source &lt;源IP地址&gt;}
+    例子：创建一个编号为1的标准IP访问控制列表，允许192.168.1.0网段的数据通过
+    access-list 1 permit 192.168.1.0 0.0.0.255
+-intface [端口号]   进入端口
+-ip access-group 1 in|out   将规则运用到端口的某个方向
+</code></pre><h4 id="配置数字扩展IP访问列表"><a href="#配置数字扩展IP访问列表" class="headerlink" title="配置数字扩展IP访问列表"></a>配置数字扩展IP访问列表</h4><pre><code>-access-list &lt;num&gt; deny|peimit ... ...
+此处省略号和上面命名扩展IP访问裂变的规则一样
+    例子：创建一个编号为101的扩展IP访问列表，允许192.168.1.0网段的主机访问ftp服务器202.10.1.2
+    access-list 101 permit tcp 192.168.1.0 0.0.0.255 host-destination 202.10.1.2 dport 21
+    -ip access-group 101 in|out 将规则运用到端口
+</code></pre><h4 id="基于时间的访问控制列表"><a href="#基于时间的访问控制列表" class="headerlink" title="基于时间的访问控制列表"></a>基于时间的访问控制列表</h4><pre><code>1.时间范围命名：
+    time-range &lt;名称&gt;
+2.定义具体的时间范围
+    absolute:绝对时间范围
+    absolute-periodic：定义绝对周期性时间范围
+    periodic：定义周期、重复使用的时间范围
+3.在访问列表中引用时间范围
+具体命令：
+
+1. absolute-periodic Monday|Tuesday|Wednesday |Thursday|Friday|Saturday|Sunday &lt;hh:mm:ss&gt; to Monday.|Tuesday.|Wednesday.|Thursday.| Friday.|Saturday.|Sunday. &lt;hh:mm:ss&gt;
+2. Periodic Monday+Tuesday+Wednesday+Thursday+Friday +Saturday+Sunday| daily| weekdays | weekend &lt;hh:mm:ss&gt; to &lt; hh:mm:ss &gt;
+3. absolute Monday|Tuesday|Wednesday |Thursday|Friday|Saturday|Sunday &lt;hh:mm:ss&gt; to Monday.|Tuesday.| Wednesday.|Thursday.| Friday.|Saturday.|Sunday. &lt;hh:mm:ss&gt;
+或absolute start &lt;hh:mm:ss&gt; &lt;yyyy.mm.dd&gt; end &lt;hh:mm:ss&gt; &lt;yyyy.mm.dd&gt;
+    例子：使Tuesday的9:15:30 到Saturday的12:30:00时间段内配置生效
+    -time-range dc-timer
+    -absolute-periodic Tuesday 9：15:30 to Saturday. 12:30:00
+    使Monday、Wednesday、Friday、Sunday四天的14:30:00到16:45:00时间段内配置生效
+    -periodic Monday Wednesday Friday Sunday 14:30:00 to 16:45:00
+    限制192.168.1.0网段的主机只能在2007年6月1日到2008年12月31日内的星期六早上7:00到星期日下午5:00进行WWW访问
+    -time-range allow-www
+    -absolute start 7:00:00 2007.6.1 end 17:00:00 2008.12.31
+    -periodic weekend 7:00:00 to 17:00:00
+    -ip acc-list extended timeacl
+    -permit tcp 192.168.1.0 0.0.0.255 any-destination dport 80 time-range allow-www
+    -firewall enable
+    -firewall default permit
+    -int f0/0
+    -ip access-group timeacl in
+</code></pre><h3 id="MAC-ACL"><a href="#MAC-ACL" class="headerlink" title="MAC ACL"></a>MAC ACL</h3><h4 id="数字标准MAC访问列表"><a href="#数字标准MAC访问列表" class="headerlink" title="数字标准MAC访问列表"></a>数字标准MAC访问列表</h4><pre><code>1.创建数字标准MAC访问列表
+2.开启交换机的包过滤，并设置默认动作
+3.将规则运用到端口
+-access-list &lt;access-list-number&gt; deny|permit any-source-mac|host-source-mac &lt;host_smac&gt; | &lt;smac&gt; &lt;smac-mask&gt;   定义一条数字标准MAC访问控制列表
+    例子：允许MAC地址为00_00_XX_XX_00_01的数据包通过，拒绝原地址00-00-00-XX-00-ab的数据包通过
+    -access-list 700 permit 00-00-00-00-00-01 00-00-FF-FF-00-01
+    -access-list 700 deny 00-00-00-00-00-ab 00-00-00-FF-00-ab
+</code></pre><h4 id="数字扩展MAC访问列表"><a href="#数字扩展MAC访问列表" class="headerlink" title="数字扩展MAC访问列表"></a>数字扩展MAC访问列表</h4><pre><code>-access-list &lt;access-list-number：1100-1199&gt; deny|permit {any-source-mac| host-source-mac &lt;host_smac&gt; | &lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac| host-destination-mac&lt;host_dmac&gt; | &lt;dmac&gt; &lt;dmac-mask&gt; } {untagged-eth2：未标记的以太2包格式 |tagged-eth2：标记的以太2包格式| untagged-802.3：未标记的以太802.3（无线）包格式 |tagged-802.3} [&lt;offset1：12-51&gt; &lt;length1&gt; &lt;value1&gt; [&lt;offset2:12-59&gt; &lt;length2&gt; &lt;value2&gt; [&lt;offset3:12-55&gt; &lt;length3&gt;&lt;value3&gt; [&lt;offset4:12-63&gt; &lt;length4&gt; &lt;value4&gt;]]]]
+解释：offset:从包头开始起的偏移量，有不同取值；length取值：1-4，对应的value的取值：0-ff，0-ffff，0-ffffff，0-ffffffff
+    例子：允许任意源MAC地址，任意目的MAC地址的tagged-eth2，且其第15 16个字节分别为0x08，0x00的包通过
+    -access-list 1100 permit any-source-mac any-destination-mac tagged-eth2 14 2 0800
+</code></pre><h4 id="命名扩展MAC访问列表"><a href="#命名扩展MAC访问列表" class="headerlink" title="命名扩展MAC访问列表"></a>命名扩展MAC访问列表</h4><pre><code>MAC-access-list extended &lt;name&gt; 创建一个扩展MAC访问列表
+-deny|permit {any-source -mac|host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac|host-destination-mac&lt;host_dmac&gt;|&lt;dmac&gt; &lt;dmac-mask&gt;} [untagged-eth2 [ethertype&lt;protocol&gt; [protocol-mask]]]
+-deny|permit {any-source -mac|host-source-mac &lt;host_smac&gt;|&lt;smac&gt;&lt;smac-mask&gt;} {any-destination-mac|host-destination-mac&lt;host_dmac&gt;|&lt;dmac&gt; &lt;dmac-mask&gt;} [tagged-eth2 [cos &lt;cos-val&gt;[&lt;cos-bitmask&gt;]] [vlanId &lt;vid-value&gt; [&lt;vid-mask&gt;]]
+-deny|permit {any-source -mac|host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac|host-destination-mac&lt;host_dmac&gt;|&lt;dmac&gt; &lt;dmac-mask&gt;} [untagged-802.3]
+-deny|permit {any-source -mac|host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac|host-destinationmac&lt;host_dmac&gt;|&lt;dmac&gt; &lt;dmac-mask&gt;} [cos：0-7 &lt;cos-val&gt; [&lt;cosbitmask：cos反掩码&gt;]][vlanId &lt;vid-value：vlan号&gt; [&lt;vid-mask：vlan反掩码&gt;]] [ethertype&lt;protocol:以太网协议号&gt; [&lt;protocol-mask：以太网协议号反掩码&gt;]]
+    例子：拒绝交换机10号端口的网段中00-12-11-23-XX-XX的802.3数据报文的发出
+    -access-list 1110 deny 00-12-11-23-11-24 00-00-00-00-ff-ff any-destination-mac tagged-802.3
+    -access-list 1110 deny 00-12-11-23-11-25 00-00-00-00-ff-ff any-destination-mac untagged-802.3
+</code></pre><h3 id="MAC-IP访问列表"><a href="#MAC-IP访问列表" class="headerlink" title="MAC-IP访问列表"></a>MAC-IP访问列表</h3><h4 id="数字扩展MAC-IP访问列表"><a href="#数字扩展MAC-IP访问列表" class="headerlink" title="数字扩展MAC-IP访问列表"></a>数字扩展MAC-IP访问列表</h4><pre><code>-access-list &lt;num&gt; {deny|permit} {any-source -mac| host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac|host-destination-mac &lt;host_dmac&gt;|&lt;dmac&gt; &lt;dmac-mask&gt;} icmp {&lt;source&gt; &lt;source-wildcard&gt;|any-source |host-source&lt;source-host-ip&gt;} {&lt;destination&gt; &lt;destination-wildcard&gt;|any-destination| hostdestination&lt;destination-host-ip&gt;} [&lt;icmp-type&gt; [&lt;icmp-code&gt;]] [precedence&lt;precedence&gt;] [tos &lt;tos&gt;] [time -range &lt;time-range-name&gt;]
+-access-list &lt;num&gt; {deny|permit} {any-source -mac| host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac|host-destination-mac &lt;host_dmac&gt;|&lt;dmac&gt;&lt;dmac-mask&gt;} igmp {{<source><source-wildcard>}|any-source|{host-source<source-host-ip>}} {{<destination><destination-wildcard>}|any-destination| {hostdestination<destination-host-ip>}} [&lt;igmp-type&gt;] [precedence &lt;precedence&gt;] [tos&lt;tos&gt;][time -range &lt;time-range-name&gt;]
+-access-list &lt;num&gt; {deny|permit} {any-source -mac|host-source-mac &lt;host_smac&gt;| &lt;smac&gt; &lt;smac-mask&gt;} {any-destination-mac| host-destination-mac&lt;host_dmac&gt; |&lt;dmac&gt; &lt;dmac-mask&gt;} tcp {{<source><source-wildcard>}|anysource|{host-source <source-host-ip>}}[s-port&lt;port1&gt;]{{<destination><destination-wildcard>}|any-destination|{host-destination<destination-host-ip>}} [d-port &lt;port3&gt;] [ack+fin+psh+rst+urg+syn][precedence &lt;precedence&gt;] [tos &lt;tos&gt;][time -range &lt;time-range-name&gt;]
+-access-list &lt;num&gt; {deny|permit}{any-source -mac| {host-source-mac&lt;host_smac&gt;}|{&lt;smac&gt;&lt;smac-mask&gt;}}{any-destination-mac| {host-destinationmac&lt;host_dmac&gt;}|{&lt;dmac&gt;&lt;dmac-mask&gt;}} udp {{<source><source-wildcard>|any-source| {host-source <source-host-ip>}}[s-port &lt;port1&gt;] {{<destination><destination-wildcard>}|any-destination| {host-destination <destination-hostip>}}[d-port&lt;port3&gt;] [precedence &lt;precedence&gt;] [tos &lt;tos&gt;][time-range &lt;timerange-name&gt;]
+-access-list &lt;num&gt; {deny|permit} {any-source -mac|host-source-mac &lt;host_smac&gt;|&lt;smac&gt; &lt;smac-mask&gt;}{any-destination-mac|host-destination-mac&lt;host_dmac&gt; |&lt;dmac&gt; &lt;dmac-mask&gt;}{eigrp|gre|igrp|ip|ipinip|ospf|{&lt;protocol-num&gt;}}{{<source><source-wildcard>}|any-source|{host-source<source-host-ip>}} {{<destination><destinationwildcard>}|any-destination| {host-destination<destination-host-ip>}} [precedence &lt;precedence&gt;][tos&lt;tos&gt;][time -range&lt;time-range-name&gt;]
+    例子：
+    允许源MAC 为00-12-34-45-XX-XX，任意目的MAC 地址，源IP 地址为：100.1.1.0 ，0.255.255.255 ，任意目的IP 地址，且源端口是100，目的端口是40000的TCP 报文通过。
+    -access-list 3199 permit 00-12-34-45-67-0000-00-00-00-FF-FF any-destination-mac tcp 100.1.1.00.255.255.255 s-port 100 any-destination d-port 40000
+    拒绝任意源MAC 地址及目的MAC 地址，任意源IP 地址及目的IP 地址，且源端口是100，目的端口是40000 的UDP 报文通过。
+    -access-list 3100 deny any-source-macany-destination-mac udp any-source s-port 100any-destination d-port 40000
+    交换机10号端口连接的网段MAC地址是00-11-11-11-xx-xx 并且IP地址是192.168.6.14/24的网段，管理员不希望使用FTP，也不允许外网PING 此网段的任何一台主机。
+    -access-list 3110 deny 00-11-11-11-00-00 00-00-00-00-ff-ffany-destination-mac tcp 192.168.6.14 0.0.0.255 any-destination d-port 21
+    -access-list 3120 deny any-source-mac 00-11-11-11-00-00 00-00-00-00-ff-ff icmp any-source 192.168.6.14 0.0.0.255
+</destination-host-ip></destinationwildcard></destination></source-host-ip></source-wildcard></destination-hostip></destination-wildcard></destination></source-host-ip></source-wildcard></destination-host-ip></destination-wildcard></destination></source-host-ip></source-wildcard></destination-host-ip></destination-wildcard></destination></source-host-ip></source-wildcard></code></pre><h4 id="命名扩展MAC-IP访问列表"><a href="#命名扩展MAC-IP访问列表" class="headerlink" title="命名扩展MAC-IP访问列表"></a>命名扩展MAC-IP访问列表</h4><pre><code>-Mac-ip-access-list extended &lt;name&gt;
+其他命令和上面差不多
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络基础/" rel="tag"># 网络基础</a>
+          
+            <a href="/tags/思科ACL/" rel="tag"># 思科ACL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/15/生成树协议STP/" rel="next" title="生成树协议基础">
+                <i class="fa fa-chevron-left"></i> 生成树协议基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/15/云的帧中继配置、OSPF/" rel="prev" title="云帧中继、OSPF">
+                云帧中继、OSPF <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Two-Ha</p>
+              <p class="site-description motion-element" itemprop="description">一个安全圈的小菜鸟，不是真正意义上的blog，只是自己的一个备忘录。如有错误请指正，我会及时修改。谢谢您的支持。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACL"><span class="nav-number">1.</span> <span class="nav-text">ACL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在三层交换机上配置ACL的详细命令"><span class="nav-number">2.</span> <span class="nav-text">在三层交换机上配置ACL的详细命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP-ACL"><span class="nav-number">2.1.</span> <span class="nav-text">IP ACL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置命名标准的IP访问控制列表"><span class="nav-number">2.1.1.</span> <span class="nav-text">配置命名标准的IP访问控制列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置命名扩展IP访问列表"><span class="nav-number">2.1.2.</span> <span class="nav-text">配置命名扩展IP访问列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置数字标准IP访问控制列表"><span class="nav-number">2.1.3.</span> <span class="nav-text">配置数字标准IP访问控制列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置数字扩展IP访问列表"><span class="nav-number">2.1.4.</span> <span class="nav-text">配置数字扩展IP访问列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于时间的访问控制列表"><span class="nav-number">2.1.5.</span> <span class="nav-text">基于时间的访问控制列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC-ACL"><span class="nav-number">2.2.</span> <span class="nav-text">MAC ACL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字标准MAC访问列表"><span class="nav-number">2.2.1.</span> <span class="nav-text">数字标准MAC访问列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字扩展MAC访问列表"><span class="nav-number">2.2.2.</span> <span class="nav-text">数字扩展MAC访问列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名扩展MAC访问列表"><span class="nav-number">2.2.3.</span> <span class="nav-text">命名扩展MAC访问列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC-IP访问列表"><span class="nav-number">2.3.</span> <span class="nav-text">MAC-IP访问列表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字扩展MAC-IP访问列表"><span class="nav-number">2.3.1.</span> <span class="nav-text">数字扩展MAC-IP访问列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名扩展MAC-IP访问列表"><span class="nav-number">2.3.2.</span> <span class="nav-text">命名扩展MAC-IP访问列表</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Two-Ha</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
