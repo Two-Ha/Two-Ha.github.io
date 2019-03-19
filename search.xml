@@ -1,6 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[正则表达式基础]]></title>
+    <url>%2F2019%2F03%2F19%2F%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[基础字符? 相当于匹配0次或1次 {0,1} * 相当于匹配0次或1次或多次 {0,} + 相当于匹配1次或多次 {1,} \d 相当于[0-9]，匹配0至9 \w 相当于[a-zA-Z0-9_]，匹配大小写26个字母及数字和下划线 \s 匹配空白字符 \n 匹配换行 运算符^ 开始标识符 () 域段，标记子字符串的开始和结束位置 [] 包含，默认是一个字符长度，方括号中匹配不需要加转义符号\ [^] 不包含，默认是一个字符长度 {n,m} 匹配n到m个字符长度，可以只填一个值 . 任何单个字符 | 或 \ 转义符号，在特殊符号前添加表示匹配特殊符号，如\?,\*匹配?和*,\\d匹配\d $ 结尾标识符 定位符\b 匹配字符串边界，如\b123\b只能匹配到123，不能匹配到0123或1234 \B 匹配非单词边界，如\Bend可匹配send，不能匹配end 示例ab* =&gt; a , ab , abbb… ab+ =&gt; ab , abb , abbb… ab? =&gt; a , ab a?b+ =&gt; b , ab , bb… , abbb… a{3} =&gt; aaa a{3,} =&gt; aaa , aaaa , aaaa… a{3,5} =&gt; aaa , aaaa , aaaaa {}指定范围可以不标明上限，但必须标明下限，最小为{0,} aaa|bbb =&gt; aaa or bbb (aa|bb)cc =&gt; aacc or bbcc (a|b)*cc =&gt; acc or bcc or aaacc or bbbcc … [a,b,c] =&gt; (a|b|c) =&gt; a , b , c a.[0-9] =&gt; ab0 , ae0 [.可匹配任意字符]]]></content>
+      <categories>
+        <category>正则表达式</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>正则表达式基础</tag>
+        <tag>正则表达式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python对文件的操作]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[打开文件f = open(&quot;文件路径&quot;) --打开文件 f.read() --指针读取文件内容 f.readline() --逐行读 f.readlines() --把每一行集合在一个列表中输出 f.close() --关闭文件 file_object = open(file_name,access_mode=&apos;r&apos;,buffering=-1) mode: r:读的方式打开，没有就报错 w:写的方式打开，有就清空，没有创建 a:追加的方式打开 r+:读写 w+:读写 a+:读写 利用for循环来读取文件f =open(&quot;文件路径&quot;) for i in f: print i, 文件的输入f = open (&quot;文件名&quot;) f.write(&quot;需要写入的内容&quot;) f.writelines([&quot;第一行\n&quot;,&quot;第二行\n&quot;...]) f.flush() --将内存中的内容写入文件中]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>文件操作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python列表生成器和生成器]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%99%A8%E5%92%8C%E7%94%9F%E6%88%90%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[python中列表生成式的使用i=list(range(1,11))##自动生成一个1到10的list# print(i) o=tuple(range(1,11))##自动生成一个1到10的tuple print(o) ####自动生成一个1到10平方的lsit#### L=[] for x in range(1,11): L.append(x*x) print(L) ###上面用for循环比较麻烦，用列表生成器生成如下### M=[x*x for x in range(1,11)] print(M) ###用两层循环可以生成全排列#### N=[m+n for m in &apos;ABC&apos; for n in &apos;XYZ&apos;] print(N) import os##导入os模块 K=[k for k in os.listdir(&apos;.&apos;)]##os.listdir可以列出该目录下的所有文件 print(K) ###有for循环输出dict的键和值### dict_1={&apos;a&apos;:&apos;A&apos;,&apos;b&apos;:&apos;B&apos;,&apos;c&apos;:&apos;C&apos;,&apos;d&apos;:&apos;D&apos;} for q,w in dict_1.items(): print(q,&apos;=&apos;,w) ###利用dict，用列表生成器生成两个变量的list#### print([s + &apos;=&apos; + f for s,f in dict_1.items()]) ###将大写字母全部转化为小写字母### list_1=[&apos;ABS&apos;,&apos;SSS&apos;,&apos;FGSDFG&apos;] print([s.lower() for s in list_1]) python中生成器的使用L=[x*x for x in range(11)] print(L) L_1=(x*x for x in range(11))##定义了一个generator ##作用：调用的时候才会输出值，一个一个的输出 #print(L_1) ##可以用next（）来输出generator的值## #print(next(L_1)) #print(next(L_1)) ##用for循环输出generator的值## for x in L_1: print(x) ##菲拉波契数列的实现### ##原本的实现方法## def fib(max): n,a,b=0,0,1 while n&lt;max: print(b) a,b=b,a+b ##这句话的意思：a=b;b=a+b;或者：t=(b,a+b);a=t[0];b=t[1] n=n+1 return &apos;done&apos; m=int(input(&apos;a number:&apos;)) fib(m) ###利用yield()可以把循环函数变成generator## def fib_1(min): n,a,b=0,0,1 while n&lt;min: yield b a,b=b,a+b n=n+1 return &apos;done&apos; mi=int(input(&apos;new a number:&apos;)) k=fib_1(mi) #for x in k: # print(x) 捕捉错误信息while True: try: x=next(k) print(&apos;fib:&apos;,x) except StopIteration as e: print(&apos;Generator return value:&apos;,e.value) break]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>列表生成器</tag>
+        <tag>生成器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python切片和迭代]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E5%88%87%E7%89%87%E5%92%8C%E8%BF%AD%E4%BB%A3%2F</url>
+    <content type="text"><![CDATA[python中切片方法的使用list_1=[&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;,&apos;G&apos;,&apos;H&apos;,&apos;I&apos;,&apos;J&apos;] ##取数操作## i=int(input(&apos;please input a numnber:&apos;)) for x in range(i): print(list_1[x]) ####另一种取值方法### print(list_1[0:i])#切片操作可以取值，从0开始取值，直至i-1 print(list_1[:i])#其中，0可以省略不写 print(list_1[1:i])#从1开始取值，直至i-1 print(list_1[-3:-1])#只能取两个值，也就是这是一个半开半闭区间，前一个数字包含，后一个数字不包含 print(list_1[-3:]) print(list_1[::2])#每两个数取一个 print(list_1[:8:3])#前8个数，每3个数取一个 ##切片操作不仅仅实用于list，可以实用于tuple和字符串### python中迭代的问题######用for循环遍历dict的键和值####### dict_1={&apos;a&apos;:&apos;A&apos;,&apos;b&apos;:&apos;B&apos;,&apos;c&apos;:&apos;C&apos;} for key in dict_1.keys(): print(key)##遍历键 for value in dict_1.values(): print(value)##遍历值 for k,v in dict_1.items(): print(&apos;dict[&apos;,k, &apos;]&apos;,&apos;=&apos;,v) python中判断一个对象是否可迭代的方法from collections import Iterable print(isinstance(dict_1,Iterable)) print(isinstance(123,Iterable)) 在索引list的时候想得到索引序号的方法for m,value_1 in enumerate(list_1):#用enumerate方法实现得到list的索引序号 print(m,value_1)]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>切片</tag>
+        <tag>迭代</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python递归]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E9%80%92%E5%BD%92%2F</url>
+    <content type="text"><![CDATA[递归基础def fact(n): if n==1: return 1 return n*fact(n-1)#递归调用自己，形成递归函数 print(fact(20)) print(fact(4)) 进行递归优化def fact_1(m): return fact_2(m,1) def fact_2(num,product): if num==1: return product return fact_2(num-1,num*product) #尾递归的使用方法，能够节约大量空间 print(fact_1(4)) print(fact_1(20)) 用递归函数实现汉诺塔的方法：&apos;&apos;&apos; i=int(input(&apos;piease input a number:&apos;)) def move(i,a=&apos;A&apos;,b=&apos;B&apos;,c=&apos;C&apos;): if i==1: print(a,&apos;---&gt;&apos;,c) else: move(i-1,a,c,b)#把n-1从A移动到b #print(a,&apos;--&gt;&apos;,c)#这句话有下面的写法 move(1,a,b,c)#把最下面一个大的移动到C move(i-1,b,a,c)#把B上的n-1移动到C move(i) &apos;&apos;&apos; hanoi优化K=0 l=int(input(&apos;please input a number:&apos;)) def move_1(n,o_1,p_1,q_1): global K#python中全局变量的使用方法 K+=1 print(&apos;第%d步：%c---&gt;%c&apos; % (K,o_1,q_1)) #print(o_1,&apos;---&gt;&apos;,q_1) def hanoi(l,o,p,q): if l==1: move_1(1,o,p,q) else: hanoi(l-1,o,q,p) move_1(1,o,p,q) hanoi(l-1,p,o,q) hanoi(l,&apos;A&apos;,&apos;B&apos;,&apos;C&apos;)]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>递归</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python函数及参数传递]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E5%87%BD%E6%95%B0%E5%8F%8A%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%2F</url>
+    <content type="text"><![CDATA[前置print(abs(-10.2))#abs()求绝对值的函数 print(max(2,5,4,9,3))#max()求最大值的函数 print(str(123.545))#str()转成字符型的函数 函数def sun(n):#定义函数需要用关键字：def m=n+54 return m #函数必须要又返回值 print(sun(45))#函数的实现 def nouse(): pass#可以定义一个函数在这儿，但是不用，直接用关键字pass掉。 lx=0 ly=0 def move(x,y):#python中，函数可以返回多个值 nx=lx+x ny=ly+y return nx,ny print(move(15,25)) 参数传递def imformation(name,gender,age=6,city=&apos;Beijing&apos;): #在定义函数时，参数可以默认，然后没有传参数的话就以默认的为准 print(&apos;name:&apos;,name) print(&apos;gender:&apos;,gender) print(&apos;age:&apos;,age) print(&apos;city:&apos;,city) return imformation(&apos;ahahha&apos;,&apos;M&apos;,8,&apos;tianjing&apos;) #可以传递新的参数 imformation(&apos;cccccc&apos;,&apos;M&apos;,12) imformation(&apos;bbaba&apos;,&apos;F&apos;,city=&apos;tianjing&apos;) #如果中间有个参数不传递的话，后面的参数必须注明 可变参数的运用##########第一种可变参数########### def calc(numbers): sum=0 for k in numbers: sum=sum+k*k print(sum) return calc([1,2,3]) #这样，定义的一个不变参数，但是传参的时候传递的是list或者tuple calc((1,2,3)) #就可以形成可变参数 ##########第二种可变参数########### def calc_1(*numbers): sum=0 for k in numbers: sum=sum+k*k print(sum) return calc_1(1,2,3,4)#像这样，在定义参数的时候添加一个*号，就变成了可变参数 calc_1()#还可以传递空参数 python中关键字参数的使用def person(name,age,**other):#定义了一个函数，其中前两个是固定参数，后面一个是关键字参数 print(&apos;name:&apos;,name,&apos;age:&apos;,age,&apos;other:&apos;,other)#关键字参数，接收任意多个带参数名的参数 return person(&apos;adsds&apos;,&apos;15&apos;)#只传递必要参数 person(&apos;sssss&apos;,&apos;20&apos;,city=&apos;Beijing&apos;,job=&apos;student&apos;)#传递必要参数以及其他参数 #其实可以把上面的处必要参数的其他参数组成一个dict{} dict_2={&apos;city&apos;:&apos;Beijing&apos;,&apos;job&apos;:&apos;student&apos;} person(&apos;sssss&apos;,20,city=dict_2[&apos;city&apos;],job=dict_2[&apos;job&apos;])#这样写，感觉更麻烦 person(&apos;sssss&apos;,20,**dict_2)#这样写显得更为简单，实际效果一样 ##python中命名关键字的作用和使用 def person_1(name,age,,city,job):#定义了一个命名关键字的函数，号是关键字，*号后面的为命名关键字 print(name,age,city,job) return #person_1(&apos;zhangsan&apos;,25)#这句话报错，说明命名关键字必须传参 person_1(&apos;zhangsan&apos;,25,city=&apos;Beijing&apos;,job=&apos;student&apos;)#命名关键字的传参必须带着参数名 def person_2(name,age,*arg,city,job):#这个函数中有一个可变参数，那么可变参数后面的参数都视为命名关键字参数 print(name,age,arg,city,job) return person_2(&apos;zhangsan&apos;,15,city=&apos;Tianjing&apos;,job=&apos;BOSS&apos;)#可变参数可以不用传参 #person_2(&apos;zhangsan&apos;,25)#这句也会报错，说明命名关键字的参数必须传递参数名和参数 #其中，这些参数可以相互使用，顺序为：必选参数，默认参数，可变参数，命名关键字参数，关键字参数 def person_3(name,age=20,*arg,city,**other): print(name,age,arg,city,other) return person_3(&apos;zahngsan&apos;,city=&apos;Beijing&apos;) person_3(&apos;zhansn&apos;,25,&apos;hahah&apos;,&apos;shffjsa&apos;,city=&apos;Beijing&apos;,job=&apos;s&apos;,d=&apos;x&apos;) #上面这句，运行结果如下： #zhansn 25 (&apos;hahah&apos;, &apos;shffjsa&apos;) Beijing {&apos;job&apos;: &apos;s&apos;, &apos;d&apos;: &apos;x&apos;}]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>函数</tag>
+        <tag>参数传递</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python条件判断和循环]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E5%92%8C%E5%BE%AA%E7%8E%AF%2F</url>
+    <content type="text"><![CDATA[if条件判断：x=int(input(&apos;please input a number:&apos;))#默认是输入的字符串，这样可以控制输入的是整数 if x&gt;18: print(&apos;adult&apos;)#在条件后面有个冒号，不能忘记 elif x&gt;6: print(&apos;teenager&apos;)#elif是else if的缩写 elif x&gt;1: print(&apos;kid&apos;)#可以跟很多elif else: print(&apos;input error&apos;)#可以没有else for循环sum = 0 for m in range(101): #for循环语句，把m带入rang（101）的序列中一个一个的执行 sum=sum+m #其中rang(101)就是生成一个从0到100的list; print(sum) while循环n = 0 while sum&gt;0:#while判断语句，为真的时候就一直执行 n=n+sum #判断后，执行缩进两个的函数。 sum=sum-2#条件改变量 print(n)]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>条件判断</tag>
+        <tag>循环</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python中List，Tuple，Dict，Set]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E4%B8%ADList%E3%80%81Tuple%E3%80%81Dict%E3%80%81Set%2F</url>
+    <content type="text"><![CDATA[list：list_1=[&apos;num0&apos;,&apos;num1&apos;,&apos;num2&apos;] #定义一个list print(list_1) #打印一个list print(&apos;%d&apos;% len(list_1)) #打印出list的长度 print(list_1[0]) #打印出list第一个元素 print(list_1[1]) #打印出list第二个元素 print(list_1[-1]) #打印出list倒数第一个元素 print(list_1[-2]) #打印出list倒数第二个元素 list_1.append(&apos;num3&apos;) #向list末尾添加一个元素 print(list_1) list_1.insert(2,&apos;num4&apos;) #在list_1[2]的位置添加一个元素num4 print(list_1) list_1.pop() #删除list末尾的元素 print(list_1) list_1.pop(3) #删除list_1[3]的位置的元素 print(list_1) list_1[1]=&apos;num6&apos; #改变list_1[1]位置的元素为‘num6’ print(list_1) 上面的输出结果： [&apos;num0&apos;, &apos;num1&apos;, &apos;num2&apos;] 3 num0 num1 num2 num1 [&apos;num0&apos;, &apos;num1&apos;, &apos;num2&apos;, &apos;num3&apos;] [&apos;num0&apos;, &apos;num1&apos;, &apos;num4&apos;, &apos;num2&apos;, &apos;num3&apos;] [&apos;num0&apos;, &apos;num1&apos;, &apos;num4&apos;, &apos;num2&apos;] [&apos;num0&apos;, &apos;num1&apos;, &apos;num4&apos;] [&apos;num0&apos;, &apos;num6&apos;, &apos;num4&apos;] tuple:#python中tuple的应用。 tuple_1 =(&apos;num0&apos;,&apos;num2&apos;,&apos;num3&apos;) #定义了一个tuple #tuple不可变。没有list的append、insert、pop等，更加安全。 print(tuple_1[0]) #打印tuple_1[0] print(tuple_1[-2]) #打印出tuple_1中倒数第二个元素 tuple_2 =(&apos;num4&apos;,&apos;num5&apos;,[&apos;num6&apos;,&apos;num7&apos;]) #定义了一个可变的tuple print(tuple_2) tuple_2[2][0]=&apos;num8&apos; #改变了num6 tuple_2[2][1]=&apos;num9&apos; #改变了num7 print(tuple_2) 上面的输出结果： num0 num2 (&apos;num4&apos;, &apos;num5&apos;, [&apos;num6&apos;, &apos;num7&apos;]) (&apos;num4&apos;, &apos;num5&apos;, [&apos;num8&apos;, &apos;num9&apos;]) python中dict的使用dict_1={&apos;name0&apos;:95,&apos;name1&apos;:75,&apos;name2&apos;:88} #定义了一个dict， #其中name0、name1是key，95、75是value print(dict_1[&apos;name1&apos;]) #打印dict_1中key为name1的值value dict_1[&apos;name3&apos;]=77 #向dict_1中添加一个key和对应的值value print(dict_1) #打印出dict_1 print(&apos;name4&apos;in dict_1) #第一种办法：判断name4是否在dict_1中 print(dict_1.get(&apos;name4&apos;)) #第二种方法判断name4是否在dict_1中，不在返回None print(dict_1.get(&apos;name4&apos;,-1)) #自定义返回值-1 dict_1.pop(&apos;name0&apos;) #删除name0的信息，包括key和value print(dict_1) #打印出dict_1 #dict和list的区别：dict内部无序，查找、删除比较快；dict的Key值不可变动， #定义的时候就固定了，比较占用内存。用空间换取时间 #list：查找和插入的时间随着元素的增加而增加，占用内存比较小。用时间换取空间 python中set的使用set_1=set([1,2,4,5,3,7,2,1,5,4,8]) #定义了一个set，set中存的是key，set没有value。 print(set_1) #set中，会自动过滤掉重复的元素。并且排序会默认为升序 set_1.add(6) #向set中添加一个元素6 print(set_1) set_1.remove(2) #删除set中的元素‘2’ print(set_1) set_2=set([1,2,4,5]) #set可以看做是数学中的集合，所以可以进行交并操作 print(set_1 &amp; set_2) #打印出两个set的交集 print(set_2 | set_1) #打印两个set的并集]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>List，Tuple，Dict，Set</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python编码输出]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E7%BC%96%E7%A0%81%E8%BE%93%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[编码输出ord（）：获取字符的整数表示 chr（）：获取整数的字符表示 \u0000-\uFFFF:表示把十六进制的数字转化成字符。 print(ord(&apos;A&apos;),chr(25991),&apos;\u4e2d\u6587&apos;) print(len(&apos;abcdefg&apos;)) //计算字符串的长度 print(len(b&apos;abcdefg&apos;)) //计算字符串的字节列长度，b&apos;&apos;表示内部的每一个字符占用一个字节 print(&apos;ABC&apos;.encode(&apos;ascii&apos;)) //encode，把字符串按标准转换成字节流，一个字符占用一个字节 print(&apos;中文&apos;.encode(&apos;UTF-8&apos;)) //通常用于想通过网络发送数据 print(b&apos;ABC&apos;.decode(&apos;ascii&apos;)) //decode，把字节流按其他标准转换成字符串 print(b&apos;\xe4\xb8\xad\xe6\x96\x87&apos;.decode(&apos;UTF-8&apos;)) //通常用于接收数据后转换存储 print(len(&apos;中文&apos;.encode(&apos;UTF-8&apos;))) 上面输出： 65 文 中文 7//这个不一定是7个字节 7//这个表示占用了7个字节 b&apos;ABC&apos; b&apos;\xe4\xb8\xad\xe6\x96\x87&apos; ABC 中文 6 格式化输出print(&apos;hello,%s&apos;%&apos;world&apos;) #%前面有几个变量，后面必须跟几个变量的值 print(&apos;Hi,%s,you have $%d&apos;%(&apos;jx&apos;,10)) print(&apos;%2d---%0002d&apos;%(3,1)) #%2d：表示退2格开始显示输出 print(&apos;%3d---%0002d&apos;%(3,1)) print(&apos;%2d---%03d&apos;%(3,1)) #%03d：表示总共输出3位，不够的前面补0 print(&apos;%.5f&apos;% 3.14159265358) #%.5f：表示输出小数点后面5位 print(&apos;%.3f&apos;% 3.14159265358) print(&apos;%d %%&apos;% 15) #输出%符号]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>编码输出</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python编码基础]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E7%BC%96%E7%A0%81%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[各种编码制度计算机：8比特（位：bit）=1字节（byte）； ASCII：占一个字节，只有127个字母，美国人编制 GB2312：占2个字节，中国编码。 Unicode：占2个字节，通用标准。 UTF-8：可变长标准，英文占1个字节，中文占3个字节。 一般来说：服务器支持的是：Unicode编码标准。 浏览器支持的是：UTF-8编码标准。]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>编码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python输出基础]]></title>
+    <url>%2F2019%2F03%2F19%2FPython%E8%BE%93%E5%87%BA%2F</url>
+    <content type="text"><![CDATA[输出基础输出：print(&quot;输出内容&quot;，“输出内容”) python在输出的时候，遇到逗号“，”会输出一个空格“ ”； 输入：变量n=input（“提示用户输入的内容”） print(&apos;n =&apos;,123) //输出整数型 print(&apos;f =&apos;,456.789) //输出浮点型 print(&apos;s1 =&apos;,&quot;&apos;Hello,world&apos;&quot;) //输出字符型 print(&apos;s2 =&apos;,&quot;&apos;Hello,\\Adam\\\&apos;&apos;&quot;) //输出特殊符号“\” print(&apos;s3 =&apos;,&apos;r\&apos;Hello, \&quot;Bart\&quot;\&apos;&apos;) print(&apos;s5=&apos;,r&apos;\\\\&apos;) //用r&apos;&apos;&apos;&apos;表示内部的字符串默认不转义 print(&apos;&apos;&apos;s4 = r\&apos;\&apos;\&apos;Hello, ...Lisa!&apos;&apos;&apos;) //用&apos;&apos;&apos;...&apos;&apos;&apos;的格式表示多行内容 上面输出结果： n = 123 f = 456.789 s1 = &apos;Hello,world&apos; s2 = &apos;Hello,\Adam\&apos;&apos; s3 = r&apos;Hello, &quot;Bart&quot;&apos; s5= \\\\ s4 = r&apos;&apos;&apos;Hello, ...Lisa! Python运算符python中运算符：+、-、*、/、%没区别。 &quot;//&quot;：整除符号，10//3=3；]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python基础</tag>
+        <tag>输出</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[云帧中继、OSPF]]></title>
     <url>%2F2019%2F03%2F15%2F%E4%BA%91%E7%9A%84%E5%B8%A7%E4%B8%AD%E7%BB%A7%E9%85%8D%E7%BD%AE%E3%80%81OSPF%2F</url>
     <content type="text"><![CDATA[配置云中继基本命令： -int [端口号] 进入端口配置模式 -en frame-relay 封装成云中继模式 -fr lmi-type [cisco|ANSI|Q933a] 配置帧中继封装类型 -fr interface-dlci [101、102...] 配置帧中继通道 然后再云的端口中添加通道。在帧中继添加帧中继 OSPFospf的特点： 无路由自环问题 支持可变长子网 支持区域划分、适应大规模网络 支持等值路径负载分担 支持路由验证，可以防止对路由器、路由协议的攻击行为 收敛时间短，比EIGRP长 不会周期性广播路由表，节省带宽资源 直接封装于IP协议之上（协议号：89），靠自身的传输机制保证可靠传输 数据包TTL值为1，保证只能传递到相邻的路由器 以组播地址发送协议报文（DR/BDR：224.0.0.6；SPF：224.0.0.5） 基本术语： 路由器ID：表现形式一个IP地址 邻接：相互交换LSA（链路状态广播）的OSPF的邻居建立的关系 邻居：相连且能匹配hello数据包所指定的参数 指定路由器（DR）：类比中心节点，产生本网络的路由宣告，列出链接到这个网络有哪些路由器，包括自己 备份指定路由器（BDR）：DR的备份路由器，DR出问题时，BDR进行DR的工作 OROTHER:非DR也非BDR OSPF链路状态数据库：所有链路状态构成的链路状态数据库 区域边界路由器：一个路由器链接这多个区域 自治系统边界路由器：一个路由器链接多个自治系统 广播式网络:一个节点发送，能被所有节点接收 OSPF数据包类型： hello：发现、维持邻居关系，选举DR/BDR（编号：1） 数据库描述：交换链路状态数据库LSA头；（编号：2） 作用：选举交换链路状态数据库过程中的主从关系 确定交换链路状态数据过程中的初始序列号 交换所有哦的LSA数据头部 链路状态请求：请求一个指定的LSA数据细节（编号：3） 链路状态更新：发送被请求的LSA数据包（编号：4） 作用：用于将多个LSA泛洪，或者对收到的请求进行应答。5S重传时间 链路状态确认：（组播）对链路状态更新包的确认（编号：5） LSA（链路状态通告数据包）分类及详解 路由器LSA： 是否为区域边界路由器（ABR） 是否为自治系统边界路由器（ASBR） 路由器链路的数量 路由类型、链路数据、链路ID 度量值：指定链路的OSPF代价 网络LSA： 网络掩码：与传输网相关的网络掩码 接入（Attached）路由器：接入到传输网的所有路由器的路由ID列表 OSPF网络介质 RFC分为：NBMA(非广播多路访问)、PTMP（点到多点类型） CISCO加分：PTP（点到点）、广播、点到多点非广播 PTP：（组播）OSPF数据包多播发送，不选举，10秒一次hello，邻居死亡时间40S（路由器之间以串口相连的路由器） 广播网络：（组播）选举，10秒一次hello，邻居死亡时间40S，手工指定DR/BDR NBMA：（单播）选举，手工指定DR/BDR、邻居关系，30秒一次hello，邻居死亡时间120S；运行模式和广播网络一样（路由器之间两两相连） PTMP：（组播）不选举，30秒一次hello，邻居死亡时间120S 点到多点非广播：（单播）不选举，手动指定邻居关系，30秒一次hello，邻居死亡时间120S 多区域OSPF中路由器的名称及用途： 区域路由器：IAR，负责维护本区域内部路由器之间的链路状态数据库 骨干路由器：可以使区域路由器，也可以是区域边界路由器 区域边界路由器：ABR，拥有链接区域的所有链路状态数据库，负责区域之间的LSA更新信息 自治系统边界路由器：ASBR，负责自治区域内外信息交换 配置OSPF-router ospf [id] 启用ospf协议，id号最好一样，便于管理 -router-id [IP地址] 给路由器配置一个路由器ID -network [ip地址] [反掩码] area [区域号] 添加相连的网络，注意：是绝对（路由器端口）地址，不是网段 -show ip ospf neighbor 显示邻居信息以及选举信息]]></content>
@@ -575,8 +712,8 @@
       </categories>
       <tags>
         <tag>Linux基础</tag>
-        <tag>Linux</tag>
         <tag>DHCP服务器</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
